@@ -94,8 +94,8 @@ dev.off()
 
 
 # Compute the summary statistics for qualitative variables
-qualitativeVariables = colnames(credit)[7:10]
-creditQualitative = credit[c(qualitativeVariables,'Balance')]
+qualitativeVariables = colnames(credit)[7:12]
+creditQualitative = credit[qualitativeVariables]
 # Gender
 genderTable = count(credit, 'Gender')
 genderTable$RelativeFrequency = genderTable$freq / sum(genderTable$freq)
