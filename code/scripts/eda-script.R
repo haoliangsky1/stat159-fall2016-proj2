@@ -160,8 +160,28 @@ save(anovaQualitative, file = 'eda-anovaQualitative.RData')
 # On gender
 balanceMale = credit$Balance[credit$Gender != 'Female']
 balanceFemale = credit$Balance[credit$Gender == 'Female']
-png('images/boxplot-conditionalOnGender.png')
-boxplot(balanceMale, balanceFemale, names = c('Male', 'Female'))
+png('images/boxplot-balanceConditionalOnGender.png')
+boxplot(balanceMale, balanceFemale, names = c('Male', 'Female'), main = 'Boxplot of Balance Conditioned on Gender')
+dev.off()
+
+# On student
+balanceStudent = credit$Balance[credit$Student == 'Yes']
+balanceNonStudent = credit$Balance[credit$Student == 'No']
+png('images/boxplot-balanceConditionalOnStudent')
+boxplot(balanceStudent, balanceNonStudent, names = c('Student', 'Non-Student'), main = 'Boxplot of Balance Conditioned on Student')
+dev.off()
+# On marital status
+balanceMarried = credit$Balance[credit$Married == 'Yes']
+balanceSingle = credit$Balance[credit$Married == 'No']
+png('images/boxplot-balanceConditionalOnMarried')
+boxplot(balanceMarried, balanceSingle, names = c('Married', 'Single'), main = 'Boxplot of Balance Conditioned on Marital Status')
+dev.off()
+# On ethnicity
+balanceCaucasian = credit$Balance[credit$Ethnicity == 'Caucasian']
+balanceAA = credit$Balance[credit$Ethnicity == 'African American']
+balanceAsian = credit$Balance[credit$Ethnicity == 'Asian']
+png('images/boxplot-balanceConditionalOnEthnicity')
+boxplot(balanceCaucasian, balanceAA, balanceAsian, names = c('Caucasian', 'African American', 'Asian'), main = 'Boxplot of Balance Conditioned on Ethnicity')
 dev.off()
 
 
