@@ -13,6 +13,10 @@ all: $(output)
 
 # PHONY targets
 
+# Pre-modeling Data Processing
+data/*.csv: code/scripts/premodelingDataProcessing.R data/Credit.csv
+	Rscript code/scripts/premodelingDataProcessing.R data/Credit.csv
+
 # Exploratory Data Analysis (EDA)
 data/*.txt: code/scripts/eda-script.R data/Credit.csv
 	Rscript code/scripts/eda-script.R data/Credit.csv
