@@ -5,17 +5,18 @@
 csv = data/Credit.csv
 RData = data/*.RData
 png = images/*.png
+txt = data/*.txt
 
-output = $(csv) $(RData) $(png)
+output = $(csv) $(RData) $(png) $(txt)
 all: $(output)
 
 
 # PHONY targets
 
 # Exploratory Data Analysis (EDA)
-data/eda-output.txt: code/scripts/eda-script.R data/Credit.csv
+data/*.txt: code/scripts/eda-script.R data/Credit.csv
 	Rscript code/scripts/eda-script.R data/Credit.csv
-data/eda-summaryMatrix.RData: code/scripts/eda-script.R data/Credit.csv
+data/*.RData: code/scripts/eda-script.R data/Credit.csv
 	Rscript code/scripts/eda-script.R data/Credit.csv
 images/*png: code/scripts/eda-script.R data/Credit.csv
 	Rscript code/scripts/eda-script.R data/Credit.csv

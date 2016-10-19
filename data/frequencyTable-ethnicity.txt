@@ -1,0 +1,4 @@
+         Ethnicity Frequency RelativeFrequency
+1 African American        99            0.2475
+2            Asian       102            0.2550
+3        Caucasian       199            0.4975

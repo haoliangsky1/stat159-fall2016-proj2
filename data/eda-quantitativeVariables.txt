@@ -1,0 +1,32 @@
+          Minimun   Maximum    Range    Median
+Income     10.354   186.634   176.28   33.1155
+Limit     855.000 13913.000 13058.00 4622.5000
+Rating     93.000   982.000   889.00  344.0000
+Cards       1.000     9.000     8.00    3.0000
+Age        23.000    98.000    75.00   56.0000
+Education   5.000    20.000    15.00   14.0000
+Balance     0.000  1999.000  1999.00  459.5000
+          1st Quartile 3rd Quartile
+Income        21.00725     57.47075
+Limit       3088.00000   5872.75000
+Rating       247.25000    437.25000
+Cards          2.00000      4.00000
+Age           41.75000     70.00000
+Education     11.00000     16.00000
+Balance       68.75000    863.00000
+          Interquartile Range       Mean
+Income                36.4635   45.21889
+Limit               2784.7500 4735.60000
+Rating               190.0000  354.94000
+Cards                  2.0000    2.95750
+Age                   28.2500   55.66750
+Education              5.0000   13.45000
+Balance              794.2500  520.01500
+              Variance Standard Deviation
+Income    1.242159e+03          35.244273
+Limit     5.327782e+06        2308.198848
+Rating    2.393956e+04         154.724143
+Cards     1.880395e+00           1.371275
+Age       2.975558e+02          17.249807
+Education 9.766917e+00           3.125207
+Balance   2.113782e+05         459.758877
