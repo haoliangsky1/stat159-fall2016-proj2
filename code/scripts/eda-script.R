@@ -95,6 +95,7 @@ dev.off()
 
 # Compute the summary statistics for qualitative variables
 qualitativeVariables = colnames(credit)[7:10]
+creditQualitative = credit[c(qualitativeVariables,'Balance')]
 # Gender
 genderTable = count(credit, 'Gender')
 genderTable$RelativeFrequency = genderTable$freq / sum(genderTable$freq)
@@ -136,4 +137,33 @@ sink()
 png('images/barchart-ethnicity.png')
 barplot(table(credit$Ethnicity), main = 'Barplot of Ethnicity', xlab = 'Ethnicity')
 dev.off()
+
+# Association between Balance and the predictors
+# Matrix of Correlations among all quantitative variables:
+creditQuantitative = credit[quantitativeVariables]
+correlationMatrix = cor(creditQuantitative)
+sink('data/eda-correlationMatrix.txt')
+correlationMatrix
+sink()
+save(correlationMatrix, file = 'data/correlation-matrix.RData')
+#Scatterplot Matrix
+png('images/scatterplot-matrix.png')
+pairs(~Income+Limit+Rating+Cards+Age+Education+Balance, data = creditQuantitative, main = 'Simple Scatterplot Matrix', cex = 0.8)
+dev.off()
+
+# Anova between Balance and all the qualitative variables
+options(contrasts = c("contr.helmert", "contr.poly"))
+anovaQualitative = aov(Balance~Gender+Student+Married+Ethnicity, data = creditQualitative)
+save(anovaQualitative, file = 'eda-anovaQualitative.RData')
+
+# Conditional boxplots between Balance and the qualitative variables
+# On gender
+balanceMale = credit$Balance[credit$Gender != 'Female']
+balanceFemale = credit$Balance[credit$Gender == 'Female']
+png('images/boxplot-conditionalOnGender.png')
+boxplot(balanceMale, balanceFemale, names = c('Male', 'Female'))
+dev.off()
+
+
+
 
