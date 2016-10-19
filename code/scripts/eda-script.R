@@ -1,5 +1,7 @@
 #setwd("~/Desktop/Fall_2016/Stat159/stat159-fall2016-proj2")
 #credit = read.csv('data/Credit.csv', header=T)
+#install.packages('plyr')
+library(plyr)
 args = commandArgs(trailingOnly =TRUE)
 credit = read.csv(args[1], header = T)
 credit = credit[,2:ncol(credit)]
@@ -92,8 +94,46 @@ dev.off()
 
 
 # Compute the summary statistics for qualitative variables
+qualitativeVariables = colnames(credit)[7:10]
+# Gender
+genderTable = count(credit, 'Gender')
+genderTable$RelativeFrequency = genderTable$freq / sum(genderTable$freq)
+colnames(genderTable)[2] = 'Frequency'
+sink('data/frequencyTable-gender.txt')
+genderTable
+sink()
+png('images/barchart-gender.png')
+barplot(table(credit$Gender), main = 'Barplot of Gender', xlab = 'Gender')
+dev.off()
 
-
-dfasfa
-
+# Student
+studentTable = count(credit, 'Student')
+studentTable$RelativeFrequency = studentTable$freq / sum(studentTable$freq)
+colnames(studentTable)[2] = 'Frequency'
+sink('data/frequencyTable-student.txt')
+studentTable
+sink()
+png('images/barchart-student.png')
+barplot(table(credit$Student), main = 'Barplot of Student', xlab = 'Student')
+dev.off()
+# Married
+marriedTable = count(credit, 'Married')
+marriedTable$RelativeFrequency = marriedTable$freq / sum(marriedTable$freq)
+colnames(marriedTable)[2] = 'Frequency'
+sink('data/frequencyTable-married.txt')
+marriedTable
+sink()
+png('images/barchart-married.png')
+barplot(table(credit$Married), main = 'Barplot of Marital Status', xlab = 'Marital Status')
+dev.off()
+# Ethnicity
+ethnicityTable = count(credit, 'Ethnicity')
+ethnicityTable$RelativeFrequency = ethnicityTable$freq / sum(ethnicityTable$freq)
+colnames(ethnicityTable)[2] = 'Frequency'
+sink('data/frequencyTable-ethnicity.txt')
+ethnicityTable
+sink()
+png('images/barchart-ethnicity.png')
+barplot(table(credit$Ethnicity), main = 'Barplot of Ethnicity', xlab = 'Ethnicity')
+dev.off()
 
