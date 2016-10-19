@@ -94,6 +94,6 @@ dev.off()
 # Compute the summary statistics for qualitative variables
 
 
-
+dfasfa
 
 
