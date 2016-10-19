@@ -1,0 +1,1 @@
+This folder has the *functions* folder for *regression-functjions.R*, the *scripts* folder for *eda-script.R*, *regression-script.R* and *sessoin-info-script.R*, the *tests* folder for *test-regression.R* and the *test-that.r* script.
