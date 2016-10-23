@@ -3,13 +3,16 @@
 args = commandArgs(trailingOnly =TRUE)
 credit = read.csv(args[1], header = T)
 credit = credit[,2:ncol(credit)]
+seed = args[2]
 
 # Set seed:
-set.seed(1)
+set.seed(seed)
 index = c(1:nrow(credit))
 trainingIndex = sample(index, 300)
 trainingSet = credit[trainingIndex, ]
 testSet = credit[-trainingIndex, ]
 
 save(trainingSet, file = 'data/trainingSet.RData')
+write.csv(trainingSet, file = 'data/trainingSet.csv')
 save(testSet, file = 'data/testSet.RData')
+write.csv(testSet, file = 'data/testSet.csv')
