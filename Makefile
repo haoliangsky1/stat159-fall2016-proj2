@@ -6,12 +6,24 @@ csv = data/Credit.csv
 RData = data/*.RData
 png = images/*.png
 txt = data/*.txt
+# The randomization seed for training and test set
+seed = 1 
 
 output = $(csv) $(RData) $(png) $(txt)
 all: $(output)
 
 
 # PHONY targets
+
+data/*.RData: code/scripts/trainingAndTestSet-script.R data/scaled-credit.csv
+	Rscript code/scripts/trainingAndTestSet-script.R data/scaled-credit.csv $(seed)
+
+data/*.csv: code/scripts/trainingAndTestSet-script.R data/scaled-credit.csv
+	Rscript code/scripts/trainingAndTestSet-script.R data/scaled-credit.csv $(seed)
+
+data/*.RData: code/scripts/regressionOLS-script.R data/*.RData
+	Rscript code/scripts/regressionOLS-script.R data/trainingSet.RData data/testSet.RData
+
 
 # Pre-modeling Data Processing
 data/*.csv: code/scripts/premodelingDataProcessing.R data/Credit.csv
@@ -22,9 +34,8 @@ data/*.txt: code/scripts/eda-script.R data/Credit.csv
 	Rscript code/scripts/eda-script.R data/Credit.csv
 data/*.RData: code/scripts/eda-script.R data/Credit.csv
 	Rscript code/scripts/eda-script.R data/Credit.csv
-images/*png: code/scripts/eda-script.R data/Credit.csv
+images/*.png: code/scripts/eda-script.R data/Credit.csv
 	Rscript code/scripts/eda-script.R data/Credit.csv
-
 
 
 data: 
