@@ -16,6 +16,8 @@ library(testthat)
 'testthat'
 library(plyr)
 'plyr'
+library(pls)
+'pls'
 print('R Session Infomation')
 sessionInfo()
 sink()
