@@ -12,6 +12,7 @@ trainingIndex = sample(index, 300)
 trainingSet = credit[trainingIndex, ]
 testSet = credit[-trainingIndex, ]
 
+save(trainingIndex, file = 'data/trainingIndex.RData')
 save(trainingSet, file = 'data/trainingSet.RData')
 write.csv(trainingSet, file = 'data/trainingSet.csv')
 save(testSet, file = 'data/testSet.RData')
