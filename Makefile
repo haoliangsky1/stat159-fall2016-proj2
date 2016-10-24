@@ -15,14 +15,18 @@ all: $(output)
 
 # PHONY targets
 
-data/*.RData: code/scripts/trainingAndTestSet-script.R data/scaled-credit.csv
+data/*.RData: code/scripts/trainingAndTestSet-script.R data/scaled-credit.csv 
 	Rscript code/scripts/trainingAndTestSet-script.R data/scaled-credit.csv $(seed)
 
 data/*.csv: code/scripts/trainingAndTestSet-script.R data/scaled-credit.csv
 	Rscript code/scripts/trainingAndTestSet-script.R data/scaled-credit.csv $(seed)
 
 data/*.RData: code/scripts/regressionOLS-script.R data/*.RData
-	Rscript code/scripts/regressionOLS-script.R data/trainingSet.RData data/testSet.RData
+	Rscript code/scripts/regressionOLS-script.R data/scaled-credit.csv data/trainingIndex.RData
+
+data/*.RData: code/scripts/regressionRR-script.R data/*/RData
+	Rscript code/scripts/regressionRR-script.R data/scaled-credit.csv data/trainingIndex.RData
+
 
 
 # Pre-modeling Data Processing
