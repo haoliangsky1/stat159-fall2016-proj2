@@ -18,6 +18,8 @@ library(plyr)
 'plyr'
 library(pls)
 'pls'
+library(glmnet)
+'glmnet'
 print('R Session Infomation')
 sessionInfo()
 sink()
