@@ -4,6 +4,7 @@ args = commandArgs(trailingOnly =TRUE)
 credit = read.csv(args[1], header = T)
 credit = credit[,2:ncol(credit)]
 seed = args[2]
+#seed = 1
 
 # Set seed:
 set.seed(seed)
