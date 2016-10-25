@@ -5,5 +5,5 @@ date: "10/24/2016"
 output: pdf_document
 ---
 
-# Method
+# 3:Method
 The methods that we are evaluating for this project include two Shrinkage Methods, *Ridge Regression* and *Lasso Regression*, and two Dimension Reduction Methods, *Principal Components Regression* and *Partial Least Squares Regression.*
