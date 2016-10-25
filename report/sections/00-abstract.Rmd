@@ -7,4 +7,4 @@ output: pdf_document
 
 # Abstract
 
-This project is largely based on Chapter 6 of **Linear Model Selection and Regularization** (From "An Introduction to Statistical Learning" by James et al.). The primary idea of this project is to perform a predictive modeling process applied on the data set Credit. We will be considering *Ridge Regression*, 
+This project is largely based on Chapter 6 of **Linear Model Selection and Regularization** (From "An Introduction to Statistical Learning" by James et al.). The primary idea of this project is to perform a predictive modeling process applied on the data set Credit. We will be considering *Ridge Regression*, *Lasso Regression*,
