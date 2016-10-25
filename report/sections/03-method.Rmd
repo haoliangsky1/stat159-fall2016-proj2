@@ -13,13 +13,18 @@ options(knitr.comment = FALSE)
 # 3:Method
 The methods that we are evaluating for this project include two Shrinkage Methods, *Ridge Regression* and *Lasso Regression*, and two Dimension Reduction Methods, *Principal Components Regression* and *Partial Least Squares Regression.* We also have the *Ordinary Least Squares Regression* as the benchmark to compare the models.
 
-## Ordinary Least Squares Regression (OLS)
-Ordinary Least S
+### Ordinary Least Squares Regression (OLS)
+Ordinary Least Squares Regression is a method for estiamting the unknow parameters in a linear regression model, with the goal of minimizing the sum of the squares of the differences between the observed responses in the given dataset and those predicted by a linear function of a set of explanatory variables. 
 
-## Ridge Regression (RR)
+## Shrinkage Methods:
+Shrinkage Methods are devoted to constrain or regularize the coefficients estimates, or equivalently, shrink the coefficient estiamtes towards zero when fitting a model containning all predictors. By shrinking the coefficient estimates, the model could significantly reduce the variance in predictions. The two best-known techniques for shrinking the regression coeffcients towards zero are *Ridge Regression* and *Lasso Regression*, both of which we would discuss in the following sections.
 
-## Lasso Regression (LR)
+### Ridge Regression (RR)
 
-## Principal Components Regression (PCR)
+### Lasso Regression (LR)
 
-## Partial Least Squares Regression (PLSR)
+## Dimension Reduction Methods:
+
+### Principal Components Regression (PCR)
+
+### Partial Least Squares Regression (PLSR)
