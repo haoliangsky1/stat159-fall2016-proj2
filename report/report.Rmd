@@ -4,3 +4,10 @@ author: "Liang Hao, Andrew Shibata"
 date: "10/24/2016"
 output: pdf_document
 ---
+
+```{r,echo=FALSE, message=FALSE}
+# Settings
+options(xtable.comment = FALSE)
+options(knitr.comment = FALSE)
+```
+
