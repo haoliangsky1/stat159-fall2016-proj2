@@ -4,6 +4,22 @@ author: "Liang Hao, Andrew Shibata"
 date: "10/24/2016"
 output: pdf_document
 ---
+```{r,echo=FALSE, message=FALSE}
+# Settings
+options(xtable.comment = FALSE)
+options(knitr.comment = FALSE)
+```
 
 # 3:Method
-The methods that we are evaluating for this project include two Shrinkage Methods, *Ridge Regression* and *Lasso Regression*, and two Dimension Reduction Methods, *Principal Components Regression* and *Partial Least Squares Regression.*
+The methods that we are evaluating for this project include two Shrinkage Methods, *Ridge Regression* and *Lasso Regression*, and two Dimension Reduction Methods, *Principal Components Regression* and *Partial Least Squares Regression.* We also have the *Ordinary Least Squares Regression* as the benchmark to compare the models.
+
+## Ordinary Least Squares Regression (OLS)
+Ordinary Least S
+
+## Ridge Regression (RR)
+
+## Lasso Regression (LR)
+
+## Principal Components Regression (PCR)
+
+## Partial Least Squares Regression (PLSR)
