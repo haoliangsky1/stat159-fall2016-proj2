@@ -1,0 +1,6 @@
+---
+title: "Statistics 159 Project 2"
+author: "Liang Hao, Andrew Shibata"
+date: "10/24/2016"
+output: pdf_document
+---
