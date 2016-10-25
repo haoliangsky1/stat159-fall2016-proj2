@@ -31,7 +31,7 @@ getSummary = function(data, name){
 
 quantitativeVariables = c(colnames(credit)[1:6], 'Balance')
 summaryMatrix = matrix(ncol = 10, nrow = 7)
-colnames(summaryMatrix) = c('Minimun', 'Maximum', 'Range', 'Median', '1st Quartile', '3rd Quartile', 'Interquartile Range', 'Mean', 'Variance', 'Standard Deviation')
+colnames(summaryMatrix) = c('Min', 'Max', 'Range', 'Median', '25%', '75%', 'IQR', 'Mean', 'Var', 'Std. Dev.')
 rownames(summaryMatrix) = quantitativeVariables
 for(i in 1:length(quantitativeVariables)) {
   summaryMatrix[i,] = getSummary(credit, quantitativeVariables[i])
@@ -103,6 +103,7 @@ colnames(genderTable)[2] = 'Frequency'
 sink('data/frequencyTable-gender.txt')
 genderTable
 sink()
+save(genderTable, file = 'data/frequencyTable-gender.RData')
 png('images/barchart-gender.png')
 barplot(table(credit$Gender), main = 'Barplot of Gender', xlab = 'Gender')
 dev.off()
@@ -114,6 +115,7 @@ colnames(studentTable)[2] = 'Frequency'
 sink('data/frequencyTable-student.txt')
 studentTable
 sink()
+save(studentTable, file = 'data/frequencyTable-student.RData')
 png('images/barchart-student.png')
 barplot(table(credit$Student), main = 'Barplot of Student', xlab = 'Student')
 dev.off()
@@ -124,6 +126,7 @@ colnames(marriedTable)[2] = 'Frequency'
 sink('data/frequencyTable-married.txt')
 marriedTable
 sink()
+save(marriedTable, file = 'data/frequencyTable-married.RData')
 png('images/barchart-married.png')
 barplot(table(credit$Married), main = 'Barplot of Marital Status', xlab = 'Marital Status')
 dev.off()
@@ -134,6 +137,7 @@ colnames(ethnicityTable)[2] = 'Frequency'
 sink('data/frequencyTable-ethnicity.txt')
 ethnicityTable
 sink()
+save(ethnicityTable, file = 'data/frequencyTable-ethnicity.RData')
 png('images/barchart-ethnicity.png')
 barplot(table(credit$Ethnicity), main = 'Barplot of Ethnicity', xlab = 'Ethnicity')
 dev.off()
@@ -167,20 +171,20 @@ dev.off()
 # On student
 balanceStudent = credit$Balance[credit$Student == 'Yes']
 balanceNonStudent = credit$Balance[credit$Student == 'No']
-png('images/boxplot-balanceConditionalOnStudent')
+png('images/boxplot-balanceConditionalOnStudent.png')
 boxplot(balanceStudent, balanceNonStudent, names = c('Student', 'Non-Student'), main = 'Boxplot of Balance Conditioned on Student')
 dev.off()
 # On marital status
 balanceMarried = credit$Balance[credit$Married == 'Yes']
 balanceSingle = credit$Balance[credit$Married == 'No']
-png('images/boxplot-balanceConditionalOnMarried')
+png('images/boxplot-balanceConditionalOnMarried.png')
 boxplot(balanceMarried, balanceSingle, names = c('Married', 'Single'), main = 'Boxplot of Balance Conditioned on Marital Status')
 dev.off()
 # On ethnicity
 balanceCaucasian = credit$Balance[credit$Ethnicity == 'Caucasian']
 balanceAA = credit$Balance[credit$Ethnicity == 'African American']
 balanceAsian = credit$Balance[credit$Ethnicity == 'Asian']
-png('images/boxplot-balanceConditionalOnEthnicity')
+png('images/boxplot-balanceConditionalOnEthnicity.png')
 boxplot(balanceCaucasian, balanceAA, balanceAsian, names = c('Caucasian', 'African American', 'Asian'), main = 'Boxplot of Balance Conditioned on Ethnicity')
 dev.off()
 
