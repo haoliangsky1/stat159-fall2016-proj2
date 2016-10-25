@@ -10,7 +10,7 @@ options(xtable.comment = FALSE)
 options(knitr.comment = FALSE)
 ```
 
-# Data
+# 2:Data
 
 ## Description
 The *Credit* data set contains information about 400 bank customers. It has eleven columns in total, six of which are quantitative, including:
@@ -116,10 +116,63 @@ Therefore, for future analysis, we may consider using *Income* and *Limit* as tw
 
 Also, we may want to normalize and standardize the data set for the range and scale of the raw data may have an impact on how our model would perform.
 
-### Quantitative Variables:
+### Qualitative Variables:
 
-####
+#### Gender:
+```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE, results='asis'}
+knitr::include_graphics("../../images/barchart-gender.png")
+load('../../data/frequencyTable-gender.RData')
+xtable(genderTable, caption = 'Frequency Table for Gender')
+```
 
+We may see that the two levels *Male* and *Female* basically have the same amount of input in this data set. Additionally, we may have a look at the boxplot os *Balance* conditioned on the two levels of *Gender*:
+```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE}
+knitr::include_graphics("../../images/boxplot-balanceConditionalOnGender.png")
+```
 
+We may see that the two boxes seem quite similar to each other, which may indicate that *Gender* might not have a strong correlation with *Balance*.
 
+#### Student:
+```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE,results='asis'}
+knitr::include_graphics("../../images/barchart-student.png")
+load('../../data/frequencyTable-student.RData')
+xtable(studentTable, caption = 'Frequency Table for Student')
+```
 
+We may see that majority input of the data set are not students. Additionally, we may have a look at the boxplot os *Balance* conditioned on the two levels of *Student*:
+```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE}
+knitr::include_graphics("../../images/boxplot-balanceConditionalOnStudent.png")
+```
+
+We may see that the *Balance* of *Students* look much higher than those of *Non-Students*, which may indicate that *Student* may be a good predictor for the *Balance*. We may keep this in mind for future analysis.
+
+#### Married:
+```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE, results='asis'}
+knitr::include_graphics("../../images/barchart-married.png")
+load('../../data/frequencyTable-married.RData')
+xtable(marriedTable, caption = 'Frequency Table for Marital Status')
+```
+
+We may see that more married customers are in the data set than single ones. Additionally, we may have a look at the boxplot os *Balance* conditioned on the two levels of *Married*:
+```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE}
+knitr::include_graphics("../../images/boxplot-balanceConditionalOnMarried.png")
+```
+
+We can see that the two boxplots have basically the same distribution, with may indicate that the *Balance* might not depend on *Married*.
+
+#### Ethnicity:
+```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE, results='asis'}
+knitr::include_graphics("../../images/barchart-ethnicity.png")
+load('../../data/frequencyTable-ethnicity.RData')
+xtable(ethnicityTable, caption = 'Frequency Table for Ethnicity')
+```
+
+We may see that *Caucasian* takes about half in the ethnicity of the customers, and *African American* and *Asian* take the other half combined. Additionally, we may have a look at the boxplot os *Balance* conditioned on the three levels of *Ethnicity*:
+```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE}
+knitr::include_graphics("../../images/boxplot-balanceConditionalOnEthnicity.png")
+```
+
+We may see that the *Balance* distribution of the three ethnicities are basically the same, meaning that *Balance* might not depend on the *Ethnicity* of the customers.
+
+#### Conclusion:
+With the analysis above, we may consider using *Student* as a predictor, for *Balance* are quite different for the two levels. For other variables, we may want to figure out with future analysis.
