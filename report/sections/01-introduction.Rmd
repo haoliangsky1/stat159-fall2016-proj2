@@ -5,3 +5,12 @@ date: "10/24/2016"
 output: pdf_document
 ---
 
+# Introduction
+The primary idea of this project is to perform a predictive modeling process applied on the data set Credit. We will be considering *Ridge Regression (RR)*, *Lasso Regression (LR)*, *Principal Components Regression (PCR)*, and *Partial Least Squares REgression (PLSR)*, and training them using 10-fold cross-validation. We evaluate the best model by their Minium Square Erros on the test sets.
+
+
+
+
+
+
+
