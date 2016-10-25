@@ -20,6 +20,8 @@ library(pls)
 'pls'
 library(glmnet)
 'glmnet'
+library(pls)
+'pls'
 print('R Session Infomation')
 sessionInfo()
 sink()
