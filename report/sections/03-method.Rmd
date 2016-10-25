@@ -10,7 +10,7 @@ options(xtable.comment = FALSE)
 options(knitr.comment = FALSE)
 ```
 
-# 3:Method
+# 3: Method
 The methods that we are evaluating for this project include two Shrinkage Methods, *Ridge Regression* and *Lasso Regression*, and two Dimension Reduction Methods, *Principal Components Regression* and *Partial Least Squares Regression.* We also have the *Ordinary Least Squares Regression* as the benchmark to compare the models.
 
 ### Ordinary Least Squares Regression (OLS)
@@ -20,8 +20,14 @@ Ordinary Least Squares Regression is a method for estiamting the unknow paramete
 Shrinkage Methods are devoted to constrain or regularize the coefficients estimates, or equivalently, shrink the coefficient estiamtes towards zero when fitting a model containning all predictors. By shrinking the coefficient estimates, the model could significantly reduce the variance in predictions. The two best-known techniques for shrinking the regression coeffcients towards zero are *Ridge Regression* and *Lasso Regression*, both of which we would discuss in the following sections.
 
 ### Ridge Regression (RR)
+*Ridge Regression* is very similar to OLS Regression, except that the coefficients are estimated by minimizing a slightly different quantity. In particular, the ridge regression coefficient estimates $\hat{\beta}^{R}$ are the values that minimize: $$\sum_{i = 1}^{n}(y_{i} - \beta_{0} - \sum_{j = 1}^{p}\beta_{j}x_{ij})^{2} + \lambda \sum_{j = 1}^{p}\beta_{j}^{2} = RSS  + \lambda \sum_{j = 1}^{p}\beta_{j}^{2} $$ where $\lambda \geq 0$ is a tuning parameter, to be determined separately.
 
-### Lasso Regression (LR)
+The above equation trade of two different criteria. As with least squares, *Ridge Regression* seeks coefficint estiamtes that fit the data well, by making the RSS small. However, the second term, $\lambda \sum_{j = 1}^{p}\beta_{j}^{2}$, called a *Shrinkage Penalty*, is small when $\beta_1, \beta_2,\dotsc,\beta_n$ are close to zero, and so it has the effect of *shrinking* the estimates of $\beta_j$ towards zero. The tuning parameter $\lambda$ serves to control the relative impact of these two terms on the regression coeffcient estimates. When $\lambda = 0$, teh penalty term has no effect, and *Ridge Regression* will produce the least squares estimates. However, as $\lambda \to \infty$, the impact of the shrinkage penalty grows, and the *Ridge Regression* coefficient estiamtes will approach zero. Therefore, *Ridge Regression* will produce a different set of coefficient estiamtes, $\hat{\beta}_{\lambda}^{R}$, for each value of $\lambda$. We will select a good value for $\lambda$ via cross-validation in this project.
+
+### Lasso Regression (LR):
+The *Ridge Regression* discussed above has one obvious disadvantage, in that it will include all $p$ predictors in teh final model. Its penalty $\lambda \sum_{j = 1}^{p}\beta_{j}^{2}$ will shrink all of the coeffcients towards zero, but it will not set any of them exactly to zero (unless $\lambda = 0$). Such a property can create a challenge in model interpretation in settings with the large number of variables $p$. 
+
+Thus, *Lasso Regression* comes in as an alternative to *Ridge Regression* that overcomes this disadvantages. The lasso coefficients, $\hat{\beta}_{\lambda}^{L}$, minimize the quantity: $$\sum_{i = 1}^{n}(y_{i} - \beta_{0} - \sum_{j = 1}^{p}\beta_{j}x_{ij})^{2} + \lambda \sum_{j = 1}^{p}|\beta_{j}| = RSS + \lambda \sum_{j = 1}^{p}|\beta_{j}|$$ We see that *Lasso Regression* differs from *Ridge Regression* in the penalty term. Similarly, the lasso shrinks the coefficient estimates towards zero. However, in the case of the lasso, the $l_1$ penalty has the effect of forcing some of the coeffcient estiamtes to be exactly equal to zero when the tuning parameter $\lambda$ is sufficiently large. Hence, the lasso performs *variable selection* in this way. As a result, models generated from the lasso are generally much easier to interpret than those produced by ridge regression. Ee also say that the lasso yields *sparse* models, models that involve only a subset of the variables. As in ridge regression, we would select a $\lambda$ via cross-validation for this project.
 
 ## Dimension Reduction Methods:
 
