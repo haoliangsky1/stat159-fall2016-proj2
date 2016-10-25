@@ -1,0 +1,30 @@
+---
+title: "Analysis"
+author: "Liang Hao, Andrew Shibata"
+date: "10/24/2016"
+output: pdf_document
+---
+## Pre-modeling Data Processing
+We will first perform two major processing steps before the modeling process:
+* convert factors into dummy variables
+    + By transforming the categorizal variables into dummy variables, we may be able to use R's built-in function *glmnet* to fit the data.
+* mean centering and standardization
+    + By centering and Standardizing the data, we may have comparable scales so that the coefficients would function properly.
+
+
+## Ordinary Least Squares Regression
+```{r,echo=FALSE,message=FALSE}
+load('../../data/')
+```
+
+
+## Ridge Regression
+
+## Lasso Regression
+
+## Principal Components Regression
+
+## Partial Least Squares Regression
+
+
+
