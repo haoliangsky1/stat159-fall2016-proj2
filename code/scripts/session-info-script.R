@@ -22,6 +22,10 @@ library(glmnet)
 'glmnet'
 library(pls)
 'pls'
+libaray(FactoMinoR)
+'FactoMinoR'
+libaray(ggplot2)
+'ggplot2'
 print('R Session Infomation')
 sessionInfo()
 sink()
