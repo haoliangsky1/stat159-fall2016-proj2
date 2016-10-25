@@ -1,0 +1,6 @@
+---
+title: "Data"
+author: "Liang Hao, Andrew Shibata"
+date: "10/24/2016"
+output: pdf_document
+---
