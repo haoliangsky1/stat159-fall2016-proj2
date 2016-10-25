@@ -4,3 +4,27 @@ author: "Liang Hao, Andrew Shibata"
 date: "10/24/2016"
 output: pdf_document
 ---
+# Data
+The *Credit* data set contains information about 400 bank customers. It has eleven columns in total, six of which are quantitative, including:
+
+* *Income*, the customer's stated income,
+* *Limit*, the customer's credit limit, 
+* *Rating*, the customer's credit rating,
+* *Cards*, the number cards that the customer has, 
+* *Age*, the age of the customer, 
+* *Education*, the year of education that the customer has; 
+
+four of which are qualitative, including:
+
+* *Gender*, the gender of the customer, with two levels: *Male* or *Female* 
+* *Student*, whether the customer is currently a student, with two levels: *Yes* or *No* 
+* *Married*, the marital status of the customer, with two levels: *Single* or *Married*,
+* *Ethnicity*, the ethnicity of the customer, with three levels: *Caucasian*, *African American* and *Asian*; 
+
+and a dependent quantitative variable *Balance*, describing the current balance of the customer in his or her bank account.
+
+
+In this report, we focus on choosing the independent variables that helps to predict the dependent variables, and choosing the best models with the optimal parameters.
+
+
+
