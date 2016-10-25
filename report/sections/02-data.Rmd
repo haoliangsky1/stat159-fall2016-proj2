@@ -176,3 +176,11 @@ We may see that the *Balance* distribution of the three ethnicities are basicall
 
 #### Conclusion:
 With the analysis above, we may consider using *Student* as a predictor, for *Balance* are quite different for the two levels. For other variables, we may want to figure out with future analysis.
+
+
+#### To the side: something fun from lecture, maybe used for PCA
+```{r}
+install.packages('FactoMinoR')
+library(FactoMineR)
+```
+
