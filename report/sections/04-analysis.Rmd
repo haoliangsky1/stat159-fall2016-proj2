@@ -4,6 +4,15 @@ author: "Liang Hao, Andrew Shibata"
 date: "10/24/2016"
 output: pdf_document
 ---
+```{r,echo=FALSE, message=FALSE}
+# Settings
+options(xtable.comment = FALSE)
+options(knitr.comment = FALSE)
+```
+
+# 4: Analysis
+In the section, we will perform the analysis we discussed above. 
+
 ## Pre-modeling Data Processing
 We will first perform two major processing steps before the modeling process:
 * convert factors into dummy variables
