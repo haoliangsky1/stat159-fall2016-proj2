@@ -12,17 +12,16 @@ The *correlation-matrix.RData* is a R data file that stores the correlation matr
 
 The *eda-correlationMatrix.txt* is the plain text file of the correlation matrix mentioned above.
 
-The *eda-quantitativeVariables.txt* file stores the summary statistics of all the quantitative variables in plain text format.
 
-The *eda-summaryMatrix.RData* file stores the summary statistics of all the quantitative variables in R Data format.
+The *eda-summaryMatrix.RData* file and *eda-quantitativeVariables.txt* file store the summary statistics of all the quantitative variables, including their *Mimnimum*, *Maximum*, *Range*, *Median*, *First and Third Quartiles*, *Interquartile Range*, *Mean*, and *Standard Deviation*.
 
-The *frequencyTable-ethnicity.RData* file and *frequencyTable-ethnicity.txt* file both store the frequency table for the qualitative variable *Ethnicity*.
+The *frequencyTable-ethnicity.RData* file and *frequencyTable-ethnicity.txt* file both store the frequency table, including counts and relative frequency, for the qualitative variable *Ethnicity*.
 
-The *frequencyTable-gender.RData* file and *frequencyTable-gender.txt* file both store the frequency table for the qualitative variable *Gender*.
+The *frequencyTable-gender.RData* file and *frequencyTable-gender.txt* file both store the frequency table, including counts and relative frequency, for the qualitative variable *Gender*.
 
-The *frequencyTable-married.RData* file and *frequencyTable-married.txt* file both store the frequency table for the qualitative variable *Married*.
+The *frequencyTable-married.RData* file and *frequencyTable-married.txt* file both store the frequency table, including counts and relative frequency, for the qualitative variable *Married*.
 
-The *frequencyTable-student.RData* file and *frequencyTable-student.txt* file both store the frequency table for the qualitative variable *Student*.
+The *frequencyTable-student.RData* file and *frequencyTable-student.txt* file both store the frequency table, including counts and relative frequency, for the qualitative variable *Student*.
 
 The *regressionPCR-cvResult.RData* file stores the information of the Principal Component Regression model trained via cross-validation, with the randomization seed of 1.
 
