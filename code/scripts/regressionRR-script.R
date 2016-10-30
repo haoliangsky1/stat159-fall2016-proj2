@@ -35,5 +35,3 @@ save(mseRR, file = 'data/cv-mseRR.RData')
 # Refit the model on the fulll data set with the chosen parameter
 rrFit = glmnet(x, y, alpha = 0, lambda = bestlam)
 save(rrFit, file = 'data/regressionRR-model.RData')
-
-

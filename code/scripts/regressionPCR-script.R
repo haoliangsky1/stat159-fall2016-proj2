@@ -34,5 +34,3 @@ save(msePCR, file = 'data/cv-msePCR.RData')
 # Refit the model on the fulll data set with the chosen parameter
 pcrFit = pcr(y~x, ncomp = 11)
 save(pcrFit, file = 'data/regressionPCR-model.RData')
-
-

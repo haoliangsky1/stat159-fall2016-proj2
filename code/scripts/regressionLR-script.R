@@ -16,7 +16,6 @@ y = scaledCredit$Balance
 grid = 10^seq(10, -2, length = 100)
 # Run the fitting function
 set.seed(seed)
-
 cv.out = cv.glmnet(x[trainingIndex,], y[trainingIndex], alpha = 1, intercept = FALSE, standardize = FALSE, lambda = grid)
 # Output the result of the fitting function
 save(cv.out, file = 'data/regressionLR-cvResult.RData')
@@ -36,5 +35,3 @@ save(mseLR, file = 'data/cv-mseLR.RData')
 # Refit the model on the fulll data set with the chosen parameter
 lrFit = glmnet(x, y, alpha = 1, lambda = bestlam)
 save(lrFit, file = 'data/regressionLR-model.RData')
-
-

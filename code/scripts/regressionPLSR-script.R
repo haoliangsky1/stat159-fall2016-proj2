@@ -15,8 +15,6 @@ x = model.matrix(Balance~., scaledCredit)[,-1]
 y = scaledCredit$Balance
 # Run the fitting function
 set.seed(seed)
-
-
 plsr.fit = plsr(y[trainingIndex]~x[trainingIndex,], validation = 'CV')
 # Output the result of the fitting function
 save(plsr.fit, file = 'data/regressionPLSR-cvResult.RData')
@@ -35,5 +33,3 @@ save(msePLSR, file = 'data/cv-msePLSR.RData')
 # Refit the model on the fulll data set with the chosen parameter
 plsrFit = plsr(y~x, ncomp = 11)
 save(plsrFit, file = 'data/regressionPLSR-model.RData')
-
-
