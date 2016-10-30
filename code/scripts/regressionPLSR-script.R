@@ -15,6 +15,8 @@ x = model.matrix(Balance~., scaledCredit)[,-1]
 y = scaledCredit$Balance
 # Run the fitting function
 set.seed(seed)
+
+
 #pcr.fit = pcr(Balance~., data = scaledCredit, subset = trainingIndex, validation = 'CV')
 pcr.fit = pcr(y[trainingIndex]~x[trainingIndex,], validation = 'CV')
 # Output the result of the fitting function

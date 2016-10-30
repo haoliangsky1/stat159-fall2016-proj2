@@ -9,26 +9,27 @@ temp = read.csv(args[1], header = T)
 scaledCredit = temp[,2:ncol(temp)]
 load(args[2])
 seed = args[3]
-library(pls)
+library(glmnet)
 # Construct the proper input
 x = model.matrix(Balance~., scaledCredit)[,-1]
 y = scaledCredit$Balance
 # Run the fitting function
 set.seed(seed)
-#pcr.fit = pcr(Balance~., data = scaledCredit, subset = trainingIndex, validation = 'CV')
-pcr.fit = pcr(y[trainingIndex]~x[trainingIndex,], validation = 'CV')
+
+
+cv.out = cv.glmnet(x[train,],y[train],alpha=0)
 # Output the result of the fitting function
-save(pcr.fit, file = 'data/regressionPCR-cvResult.RData')
+save(cv.out, file = 'data/regressionLR-cvResult.RData')
 # Select best model
-minComp = min(pcr.fit$validation$PRESS)
+minComp = min(cv.out$validation$PRESS)
 # Plot the corss-validation errors in terms of the tunning parameter
-png('images/scatterplot-pcr.png')
+png('images/scatterplot-lr.png')
 validationplot(cv.out, val.type = "MSEP")
 dev.off()
 # Compute the test MSE for best model selected
 x.test = x[-(trainingIndex), ]
 y.test = y[-(trainingIndex)]
-pcr.pred = predict(pcr.fit, x.test, ncomp = 11)
+lr.pred = predict(pcr.fit, x.test, ncomp = 11)
 msePCR = mean((pcr.pred - y.test)^2)
 save(msePCR, file = 'data/cv-msePCR.RData')
 # Refit the model on the fulll data set with the chosen parameter
