@@ -13,27 +13,28 @@ library(glmnet)
 # Construct the proper input
 x = model.matrix(Balance~., scaledCredit)[,-1]
 y = scaledCredit$Balance
+grid = 10^seq(10, -2, length = 100)
 # Run the fitting function
 set.seed(seed)
 
-
-cv.out = cv.glmnet(x[train,],y[train],alpha=0)
+cv.out = cv.glmnet(x[trainingIndex,], y[trainingIndex], alpha = 1, intercept = FALSE, standardize = FALSE, lambda = grid)
 # Output the result of the fitting function
 save(cv.out, file = 'data/regressionLR-cvResult.RData')
 # Select best model
-minComp = min(cv.out$validation$PRESS)
+bestlam = cv.out$lambda.min
 # Plot the corss-validation errors in terms of the tunning parameter
-png('images/scatterplot-lr.png')
-validationplot(cv.out, val.type = "MSEP")
+png('images/scatterplot-lasso.png')
+plot(cv.out)
 dev.off()
 # Compute the test MSE for best model selected
 x.test = x[-(trainingIndex), ]
 y.test = y[-(trainingIndex)]
-lr.pred = predict(pcr.fit, x.test, ncomp = 11)
-msePCR = mean((pcr.pred - y.test)^2)
-save(msePCR, file = 'data/cv-msePCR.RData')
+lasso.mod = glmnet(x[trainingIndex, ], y[trainingIndex], alpha = 1, lambda= bestlam)
+lasso.pred = predict(lasso.mod, s = bestlam, newx = x.test)
+mseRR = mean((lasso.pred - y.test)^2)
+save(mseRR, file = 'data/cv-mseLR.RData')
 # Refit the model on the fulll data set with the chosen parameter
-pcrFit = pcr(y~x, ncomp = 11)
-save(rrFit, file = 'data/regressionRR-model.RData')
+lrFit = glmnet(x, y, alpha = 1, lambda = bestlam)
+save(lrFit, file = 'data/regressionLR-model.RData')
 
 
