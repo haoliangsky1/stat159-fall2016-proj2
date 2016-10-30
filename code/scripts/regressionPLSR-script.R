@@ -30,7 +30,7 @@ dev.off()
 x.test = x[-(trainingIndex), ]
 y.test = y[-(trainingIndex)]
 plsr.pred = predict(plsr.fit, x.test, ncomp = 11)
-msePCR = mean((plsr.pred - y.test)^2)
+msePLSR = mean((plsr.pred - y.test)^2)
 save(msePLSR, file = 'data/cv-msePLSR.RData')
 # Refit the model on the fulll data set with the chosen parameter
 plsrFit = plsr(y~x, ncomp = 11)
