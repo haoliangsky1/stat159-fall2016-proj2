@@ -33,6 +33,6 @@ msePCR = mean((pcr.pred - y.test)^2)
 save(msePCR, file = 'data/cv-msePCR.RData')
 # Refit the model on the fulll data set with the chosen parameter
 pcrFit = pcr(y~x, ncomp = 11)
-save(rrFit, file = 'data/regressionRR-model.RData')
+save(pcrFit, file = 'data/regressionPCR-model.RData')
 
 

@@ -31,8 +31,8 @@ x.test = x[-(trainingIndex), ]
 y.test = y[-(trainingIndex)]
 lasso.mod = glmnet(x[trainingIndex, ], y[trainingIndex], alpha = 1, lambda= bestlam)
 lasso.pred = predict(lasso.mod, s = bestlam, newx = x.test)
-mseRR = mean((lasso.pred - y.test)^2)
-save(mseRR, file = 'data/cv-mseLR.RData')
+mseLR = mean((lasso.pred - y.test)^2)
+save(mseLR, file = 'data/cv-mseLR.RData')
 # Refit the model on the fulll data set with the chosen parameter
 lrFit = glmnet(x, y, alpha = 1, lambda = bestlam)
 save(lrFit, file = 'data/regressionLR-model.RData')
