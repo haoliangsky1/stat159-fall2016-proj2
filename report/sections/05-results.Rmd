@@ -1,0 +1,12 @@
+---
+title: "Results"
+author: "Liang Hao, Andrew Shibata"
+date: "11/1/2016"
+output: pdf_document
+---
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+options(xtable.comment = FALSE)
+options(knitr.comment = FALSE)
+```
+

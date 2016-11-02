@@ -1,0 +1,12 @@
+---
+title: "Conclusions"
+author: "Liang Hao, Andrew Shibata"
+date: "11/1/2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(xtable.comment = FALSE)
+options(knitr.comment = FALSE)
+```
