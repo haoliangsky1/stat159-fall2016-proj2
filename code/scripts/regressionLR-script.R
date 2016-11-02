@@ -16,22 +16,24 @@ y = scaledCredit$Balance
 grid = 10^seq(10, -2, length = 100)
 # Run the fitting function
 set.seed(seed)
-cv.out = cv.glmnet(x[trainingIndex,], y[trainingIndex], alpha = 1, intercept = FALSE, standardize = FALSE, lambda = grid)
+lr.cv.out = cv.glmnet(x[trainingIndex,], y[trainingIndex], alpha = 1, intercept = FALSE, standardize = FALSE, lambda = grid)
 # Output the result of the fitting function
-save(cv.out, file = 'data/regressionLR-cvResult.RData')
+save(lr.cv.out, file = 'data/regressionLR-cvResult.RData')
 # Select best model
-bestlam = cv.out$lambda.min
+bestlam = lr.cv.out$lambda.min
 # Plot the corss-validation errors in terms of the tunning parameter
 png('images/scatterplot-lasso.png')
-plot(cv.out)
+plot(lr.cv.out)
+abline(v = bestlam)
 dev.off()
 # Compute the test MSE for best model selected
 x.test = x[-(trainingIndex), ]
 y.test = y[-(trainingIndex)]
 lasso.mod = glmnet(x[trainingIndex, ], y[trainingIndex], alpha = 1, lambda= bestlam)
 lasso.pred = predict(lasso.mod, s = bestlam, newx = x.test)
-mseLR = mean((lasso.pred - y.test)^2)
-save(mseLR, file = 'data/cv-mseLR.RData')
+lr.mse = mean((lasso.pred - y.test)^2)
+save(lr.mse, file = 'data/mseLR.RData')
 # Refit the model on the fulll data set with the chosen parameter
 lrFit = glmnet(x, y, alpha = 1, lambda = bestlam)
 save(lrFit, file = 'data/regressionLR-model.RData')
+

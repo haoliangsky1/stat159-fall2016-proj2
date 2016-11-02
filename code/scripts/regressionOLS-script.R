@@ -7,10 +7,10 @@ args = commandArgs(trailingOnly =TRUE)
 temp = read.csv(args[1], header = T)
 scaledCredit = temp[,2:ncol(temp)]
 load(args[2])
-olsFit = lm(Balance~Income + Limit + Student1, data = scaledCredit, subset = trainingIndex)
-temp = lm(Balance~., data = scaledCredit, subset = trainingIndex)
-save(olsFit, file = 'data/ols-regression-model')
-
+#olsFit = lm(Balance~Income + Limit + Student1, data = scaledCredit, subset = trainingIndex)
+olsFit = lm(Balance~., data = scaledCredit, subset = trainingIndex)
+save(olsFit, file = 'data/ols-regression-model.RData')
 
 ols.pred = predict(temp, scaledCredit[-trainingIndex,])
-mse = mean((ols.pred - scaledCredit[-trainingIndex,"Balance"])^2)
+ols.mse = mean((ols.pred - scaledCredit[-trainingIndex,"Balance"])^2)
+save(ols.mse, file = 'data/mseOLS.RData')
