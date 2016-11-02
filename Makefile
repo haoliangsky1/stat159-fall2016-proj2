@@ -1,5 +1,5 @@
 # Declare phony targets
-.PHONY: all data clean tests eda regression report
+.PHONY: all data clean tests eda ols ridge lasso pcr plsr regression report slides session
 
 # Output
 csv = data/Credit.csv
@@ -11,8 +11,6 @@ seed = 1
 
 output = $(csv) $(RData) $(png) $(txt) session-info.txt report/report.pdf
 # PHONY targets
-
-
 
 all: $(output)
 
@@ -131,10 +129,10 @@ session:
 
 clean:
 	# Clean files
-	rm -f session-info.txt
-	rm -f data/*.csv
-	rm -f images/*.*
-	rm -f data/*.*
+	# rm -f session-info.txt
+	# rm -f data/*.csv
+	# rm -f images/*.*
+	# rm -f data/*.*
 	rm -f report/*.pdf
 	rm -f report/section/*.pdf
 
