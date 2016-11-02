@@ -1,31 +1,24 @@
 # Include all library() calls to the packages 
 # that are used in the project
-sink('session-info.txt')
-print('Packages used for this project:')
+libaray(devtools)
+libaray(knitr)
+library(rmarkdown)
 library(stats)
-'stats'
 library(base)
-'base'
 library(utils)
-'utils'
 library(grDevices)
-'grDevices'
 library(graphics)
-'graphics'
 library(testthat)
-'testthat'
 library(plyr)
-'plyr'
 library(pls)
-'pls'
 library(glmnet)
-'glmnet'
 library(pls)
-'pls'
 libaray(FactoMinoR)
-'FactoMinoR'
 libaray(ggplot2)
-'ggplot2'
-print('R Session Infomation')
+
+sink('session-info.txt')
+cat("Session Information\n\n")
+print(sessionInfo())
+devtools::session_info()
 sessionInfo()
 sink()

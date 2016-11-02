@@ -41,6 +41,8 @@ data/*.RData: code/scripts/eda-script.R data/Credit.csv
 images/*.png: code/scripts/eda-script.R data/Credit.csv
 	Rscript code/scripts/eda-script.R data/Credit.csv
 
+session:
+	bash session.sh
 
 data: 
 	# Download the file Credit.csv to the folder data
