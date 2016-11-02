@@ -15,22 +15,24 @@ x = model.matrix(Balance~., scaledCredit)[,-1]
 y = scaledCredit$Balance
 # Run the fitting function
 set.seed(seed)
-#pcr.fit = pcr(Balance~., data = scaledCredit, subset = trainingIndex, validation = 'CV')
-pcr.fit = pcr(y[trainingIndex]~x[trainingIndex,], validation = 'CV')
+#pcr.fit = pcr(y[trainingIndex]~x[trainingIndex,], validation = 'CV')
+pcr.fit = pcr(Balance~., data = scaledCredit, subset = trainingIndex, validation = 'CV')
 # Output the result of the fitting function
 save(pcr.fit, file = 'data/regressionPCR-cvResult.RData')
 # Select best model
-minComp = min(pcr.fit$validation$PRESS)
+pcr.minComp = min(pcr.fit$validation$PRESS)
+pcr.minComp = 12
 # Plot the corss-validation errors in terms of the tunning parameter
 png('images/scatterplot-pcr.png')
-validationplot(cv.out, val.type = "MSEP")
+validationplot(pcr.fit, val.type = "MSEP", main = 'Validation Plot for Cross-validation or PCR')
 dev.off()
 # Compute the test MSE for best model selected
 x.test = x[-(trainingIndex), ]
 y.test = y[-(trainingIndex)]
-pcr.pred = predict(pcr.fit, x.test, ncomp = 11)
-msePCR = mean((pcr.pred - y.test)^2)
-save(msePCR, file = 'data/cv-msePCR.RData')
+pcr.pred = predict(pcr.fit, x.test, ncomp = 12)
+pcr.mse = mean((pcr.pred - y.test)^2)
+save(pcr.mse, file = 'data/msePCR.RData')
 # Refit the model on the fulll data set with the chosen parameter
-pcrFit = pcr(y~x, ncomp = 11)
+pcrFit = pcr(y~x, ncomp = 12)
 save(pcrFit, file = 'data/regressionPCR-model.RData')
+
