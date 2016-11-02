@@ -23,7 +23,7 @@ save(plsr.fit, file = 'data/regressionPLSR-cvResult.RData')
 minComp = min(plsr.fit$validation$PRESS)
 # Plot the corss-validation errors in terms of the tunning parameter
 png('images/scatterplot-plsr.png')
-validationplot(plsr.fit, val.type = "MSEP", main = 'Validation Plot for Cross-validation or PLSR')
+validationplot(plsr.fit, val.type = "MSEP", main = 'Plot for Cross-validation of PLSR')
 dev.off()
 # Compute the test MSE for best model selected
 x.test = x[-(trainingIndex), ]

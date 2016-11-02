@@ -24,7 +24,7 @@ pcr.minComp = min(pcr.fit$validation$PRESS)
 pcr.minComp = 12
 # Plot the corss-validation errors in terms of the tunning parameter
 png('images/scatterplot-pcr.png')
-validationplot(pcr.fit, val.type = "MSEP", main = 'Validation Plot for Cross-validation or PCR')
+validationplot(pcr.fit, val.type = "MSEP", main = 'Plot for Cross-validation of PCR')
 dev.off()
 # Compute the test MSE for best model selected
 x.test = x[-(trainingIndex), ]
