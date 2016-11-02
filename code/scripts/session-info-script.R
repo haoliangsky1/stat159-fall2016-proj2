@@ -1,7 +1,7 @@
 # Include all library() calls to the packages 
 # that are used in the project
-libaray(devtools)
-libaray(knitr)
+library(devtools)
+library(knitr)
 library(rmarkdown)
 library(stats)
 library(base)
@@ -13,12 +13,13 @@ library(plyr)
 library(pls)
 library(glmnet)
 library(pls)
-libaray(FactoMinoR)
-libaray(ggplot2)
+library(FactoMineR)
+library(ggplot2)
+library(xtable)
 
-sink('session-info.txt')
+sink("../../session-info.txt", append = TRUE)
 cat("Session Information\n\n")
 print(sessionInfo())
 devtools::session_info()
-sessionInfo()
 sink()
+

@@ -21,6 +21,7 @@ plsr.fit = plsr(Balance~., data=scaledCredit, subset = trainingIndex, validation
 save(plsr.fit, file = 'data/regressionPLSR-cvResult.RData')
 # Select best model
 minComp = min(plsr.fit$validation$PRESS)
+minComp = 4
 # Plot the corss-validation errors in terms of the tunning parameter
 png('images/scatterplot-plsr.png')
 validationplot(plsr.fit, val.type = "MSEP", main = 'Plot for Cross-validation of PLSR')

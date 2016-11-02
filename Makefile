@@ -20,10 +20,11 @@ report/report.pdf:
 	Rscript -e 'library(rmarkdown); render("report/report.Rmd")'
 
 session-info.txt:
+	bash session.sh
 	Rscript code/scripts/session-info-script.R
 
 data/*.RData:
-	Rscript code/scripts/regressionOLS-script.R data/scaled-credit.csv
+	Rscript code/scripts/regressionOLS-script.R data/scaled-credit.csv data/trainingIndex.RData
 data/*.RData:
 	Rscript code/scripts/regressionLR-script.R data/scaled-credit.csv data/trainingIndex.RData $(seed)
 data/*.RData:
@@ -42,37 +43,43 @@ data/*.png:
 	Rscript code/scripts/regressionPLSR-script.R data/scaled-credit.csv data/trainingIndex.RData $(seed)
 
 
-data/*.RData: code/scripts/trainingAndTestSet-script.R data/scaled-credit.csv 
+data/*.RData: 
 	Rscript code/scripts/trainingAndTestSet-script.R data/scaled-credit.csv $(seed)
 
-data/*.csv: code/scripts/trainingAndTestSet-script.R data/scaled-credit.csv
+data/*.csv: 
 	Rscript code/scripts/trainingAndTestSet-script.R data/scaled-credit.csv $(seed)
 
-data/*.RData: code/scripts/regressionOLS-script.R data/*.RData
+data/*.RData:
 	Rscript code/scripts/regressionOLS-script.R data/scaled-credit.csv data/trainingIndex.RData
 
-data/*.RData: code/scripts/regressionRR-script.R data/*/RData
+data/*.RData:
 	Rscript code/scripts/regressionRR-script.R data/scaled-credit.csv data/trainingIndex.RData
 
 
 
 # Pre-modeling Data Processing
-data/*.csv: code/scripts/premodelingDataProcessing.R data/Credit.csv
-	Rscript code/scripts/premodelingDataProcessing.R data/Credit.csv
+data/scaled-credit.csv:
+	Rscript code/scripts/premodelingDataProcessing-script.R data/Credit.csv
 
 # Exploratory Data Analysis (EDA)
-data/*.txt: code/scripts/eda-script.R data/Credit.csv
+data/*.txt: 
 	Rscript code/scripts/eda-script.R data/Credit.csv
-data/*.RData: code/scripts/eda-script.R data/Credit.csv
+data/*.RData: 
 	Rscript code/scripts/eda-script.R data/Credit.csv
-images/*.png: code/scripts/eda-script.R data/Credit.csv
+images/*.png: 
 	Rscript code/scripts/eda-script.R data/Credit.csv
+
+data/Credit.csv:
+	curl -O http://www-bcf.usc.edu/~gareth/ISL/Credit.csv
+	mv Credit.csv data/Credit.csv
 
 
 data: 
 	# Download the file Credit.csv to the folder data
 	curl -O http://www-bcf.usc.edu/~gareth/ISL/Credit.csv
 	mv Credit.csv data/Credit.csv
+	Rscript code/scripts/premodelingDataProcessing-script.R data/Credit.csv
+	Rscript code/scripts/trainingAndTestSet-script.R data/scaled-credit.csv $(seed)
 
 tests:
 	# run the unit tests of the self-defiend functions
@@ -84,7 +91,7 @@ eda:
 
 ols:
 	# run the OLS regression
-	Rscript code/scripts/regressionOLS-script.R data/scaled-credit.csv
+	Rscript code/scripts/regressionOLS-script.R data/scaled-credit.csv data/trainingIndex.RData
 
 ridge:
 	# run the Ridge Regression with Seed
@@ -124,8 +131,10 @@ session:
 
 clean:
 	# Clean files
-	# rm -f data/Credit.csv
-	# rm -f images/*.png
+	rm -f session-info.txt
+	rm -f data/*.csv
+	rm -f images/*.*
+	rm -f data/*.*
 	rm -f report/*.pdf
 	rm -f report/section/*.pdf
 

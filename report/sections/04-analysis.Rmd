@@ -83,11 +83,11 @@ We then fit the Principal Components Regression to the training set. Setting the
 
 ```{r,echo=FALSE, message=FALSE,fig.align='center', fig.width=4}
 load('../../data/regressionPCR-cvResult.RData')
-pcr.minCompt = 12
+pcr.minCompt = 11
 validationplot(pcr.fit, val.type = "MSEP", main = 'Plot for Cross-validation of PCR')
 ```
 
-From the validation plot above, we may find that the lowest cross-validation error occurs when $M = 12$ component are used. Therefore, we compute the test MSE:
+From the validation plot above, we may find that the lowest cross-validation error occurs when $M = 11$ component are used. Therefore, we compute the test MSE:
 
 ```{r,echo=FALSE, message=FALSE}
 load('../../data/msePCR.RData')

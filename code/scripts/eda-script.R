@@ -1,6 +1,5 @@
 #setwd("~/Desktop/Fall_2016/Stat159/stat159-fall2016-proj2")
 #credit = read.csv('data/Credit.csv', header=T)
-#install.packages('plyr')
 library(plyr)
 args = commandArgs(trailingOnly =TRUE)
 credit = read.csv(args[1], header = T)
@@ -94,7 +93,7 @@ dev.off()
 
 
 # Compute the summary statistics for qualitative variables
-qualitativeVariables = colnames(credit)[7:12]
+qualitativeVariables = colnames(credit)[7:ncol(credit)]
 creditQualitative = credit[qualitativeVariables]
 # Gender
 genderTable = count(credit, 'Gender')
@@ -158,7 +157,7 @@ dev.off()
 # Anova between Balance and all the qualitative variables
 options(contrasts = c("contr.helmert", "contr.poly"))
 anovaQualitative = aov(Balance~Gender+Student+Married+Ethnicity, data = creditQualitative)
-save(anovaQualitative, file = 'eda-anovaQualitative.RData')
+save(anovaQualitative, file = 'data/eda-anovaQualitative.RData')
 
 # Conditional boxplots between Balance and the qualitative variables
 # On gender

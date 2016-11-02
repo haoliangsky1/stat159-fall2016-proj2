@@ -20,7 +20,6 @@ pcr.fit = pcr(Balance~., data = scaledCredit, subset = trainingIndex, validation
 # Output the result of the fitting function
 save(pcr.fit, file = 'data/regressionPCR-cvResult.RData')
 # Select best model
-pcr.minComp = min(pcr.fit$validation$PRESS)
 pcr.minComp = 12
 # Plot the corss-validation errors in terms of the tunning parameter
 png('images/scatterplot-pcr.png')
@@ -29,10 +28,10 @@ dev.off()
 # Compute the test MSE for best model selected
 x.test = x[-(trainingIndex), ]
 y.test = y[-(trainingIndex)]
-pcr.pred = predict(pcr.fit, x.test, ncomp = 12)
+pcr.pred = predict(pcr.fit, x.test, ncomp = 11)
 pcr.mse = mean((pcr.pred - y.test)^2)
 save(pcr.mse, file = 'data/msePCR.RData')
 # Refit the model on the fulll data set with the chosen parameter
-pcrFit = pcr(y~x, ncomp = 12)
+pcrFit = pcr(y~x, ncomp = 11)
 save(pcrFit, file = 'data/regressionPCR-model.RData')
 
