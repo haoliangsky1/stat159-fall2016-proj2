@@ -8,5 +8,7 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 options(xtable.comment = FALSE)
 options(knitr.comment = FALSE)
+library(glmnet)
+library(pls)
 ```
 

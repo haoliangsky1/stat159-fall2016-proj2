@@ -42,7 +42,7 @@ We then fit the Ridge Regression model to the training set. Firstly, we need to 
 ```{r,echo=FALSE, message=FALSE, fig.width=4, fig.align='center'}
 load('../../data/regressionRR-cvResult.RData')
 rr.bestlam = rr.cv.out$lambda.min
-plot(rr.cv.out)
+plot(rr.cv.out, main = 'Plot for Cross-validation of Ridge')
 abline(v = rr.bestlam)
 print(rr.bestlam)
 ```
@@ -63,7 +63,7 @@ We then fit the Lasso Regression model to the training set. Firstly, we need to 
 ```{r,echo=FALSE, message=FALSE, fig.width=4, fig.align='center'}
 load('../../data/regressionLR-cvResult.RData')
 lr.bestlam = lr.cv.out$lambda.min
-plot(lr.cv.out)
+plot(lr.cv.out, main = 'Plot for Cross-validation of Lasso')
 abline(v = lr.bestlam)
 print(lr.bestlam)
 ```
@@ -84,7 +84,7 @@ We then fit the Principal Components Regression to the training set. Setting the
 ```{r,echo=FALSE, message=FALSE,fig.align='center', fig.width=4}
 load('../../data/regressionPCR-cvResult.RData')
 pcr.minCompt = 12
-validationplot(pcr.fit, val.type = "MSEP", main = 'Validation Plot for Cross-validation or PCR')
+validationplot(pcr.fit, val.type = "MSEP", main = 'Plot for Cross-validation of PCR')
 ```
 
 From the validation plot above, we may find that the lowest cross-validation error occurs when $M = 12$ component are used. Therefore, we compute the test MSE:
@@ -101,9 +101,8 @@ We then fit the Partial Least Squares Regression to the training set. Setting th
 
 
 ```{r,echo=FALSE, message=FALSE,fig.align='center', fig.width=4}
-load('../../data/regressionPCR-cvResult.RData')
-plsr.minCompt = 4
-validationplot(plsr.fit, val.type = "MSEP", main = 'Validation Plot for Cross-validation or PLSR')
+load('../../data/regressionPLSR-cvResult.RData')
+validationplot(plsr.fit, val.type = "MSEP", main = 'Plot for Cross-validation of PLSR')
 ```
 
 From the validation plot above, we may find that the lowest cross-validation error occurs when $M = 4$ component are used. Therefore, we compute the test MSE:

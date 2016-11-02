@@ -2,7 +2,7 @@
 title: "Conclusions"
 author: "Liang Hao, Andrew Shibata"
 date: "11/1/2016"
-output: html_document
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
