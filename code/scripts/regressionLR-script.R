@@ -1,4 +1,3 @@
-#setwd("C:/Users/andre/Dropbox/College/Fall 16/Stat159/stat159-fall2016-proj2")
 #trainingSet = read.csv('data/trainingSet.csv', header=T)
 #scaledCredit = read.csv('data/scaled-credit.csv', header=T)
 #load('data/trainingIndex.RData')
