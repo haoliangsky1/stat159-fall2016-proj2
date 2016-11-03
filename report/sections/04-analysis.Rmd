@@ -25,6 +25,9 @@ We will first perform two major processing steps before the modeling process:
 * mean centering and standardization
     
     By centering and Standardizing the data, we may have comparable scales so that the coefficients would function properly.
+    
+* packages used
+    The different models used either the *glmnet* or the *pls* package. *glmnet* was applicable for Lasso and Ridge Regression. *pls* was applicable for Principle Component and Partial Least Squares Regression.
 
 
 ## Ordinary Least Squares Regression (OLS)
