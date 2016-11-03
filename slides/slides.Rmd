@@ -37,12 +37,14 @@ The regression methods that we will use in this project include
 
 * Dimensional Reduction Methods
 
-  - Pricipal Components Regression
+  - Pricipal Components Regression (PCR)
   
-  - Partial Least Squares Regression
+  - Partial Least Squares Regression (PLSR)
 
-## Findings
-With the analysis, we find that
+## Results
+### Ridge vs. Lasso
+
+### PCR vs. PLSR
 
 ## Conclusions
 In the end, we may conclude that 
