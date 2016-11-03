@@ -13,3 +13,5 @@ library(pls)
 ```
 
 # 5: Results
+
+    In this section we will compare Principal Components Regression with Partial Least Squares Regression and Lasso Regression with Ridge Regression.
