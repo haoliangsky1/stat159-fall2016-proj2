@@ -28,4 +28,11 @@ knitr::include_graphics("../../images/scatterplot-plsr.png")
     How closely the dotted red line fits the solid black line is an indication of how generalizable this regression model is for an arbitrary data set. Informally, it appears as though PCR better matches up the expected error with the training set error compared to PLSR since the lines are further apart for PLSR. However, overall, PLSR appears to minimize error (MSEP) using fewer components than does PCR. The tradeoff between PCR and PLSR is that PLSR requires fewer components to attain a low error, but it is subject to more uncertainty when applied to different data sets.
     
 ## LR and RR
-    
+    Below are the analogous plots for LR and RR. These plots compare log(lambda) values to MSEP.
+
+```{r,echo=FALSE,fig.align='center'}
+knitr::include_graphics("../../images/scatterplot-lr.png")
+knitr::include_graphics("../../images/scatterplot-rr.png")
+``` 
+
+    The lambda values in LR and RR determine how heavily the Ridge and Lasso Regression models shrink the effect of regression coefficients. This shrinkage influences the MSEP errors as seen in the plots. Noting that these are log(lambda) values, it appears as though lasso regression works best with very small lambda values while ridge regression gradually increases in error. Since LR only uses a subset of the coefficient vector while RR does not, LR involves fewer predictive elements so it makes sense that larger tuning values would more heavily influence the resulting prediction, and thus the MSEP. 
