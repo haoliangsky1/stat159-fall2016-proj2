@@ -13,7 +13,47 @@ library(glmnet)
 library(pls)
 ```
 
-## R Markdown
+## The slides
+These are the accompanying slides to our project which bears the same title.
+
+In the following slides, we would discuss 
+
+## Data
+The data for this project, the [Credit](http://www-bcf.usc.edu/~gareth/ISL/Credit.csv) come from the generous contribution of *An Introduction to Statistical Learning*.
+
+## Goal
+The goal of this project is thus to choose and fit a regression model in order to predict the *Balance* of any new client with the above information as input.
+
+## Methods
+The regression methods that we will use in this project include
+
+* Ordianry Linear Squares (OLS)
+
+* Shrinkage Methods
+
+  - Ridge Regression (RR)
+  
+  - Lasso Regression (LR)
+
+* Dimensional Reduction Methods
+
+  - Pricipal Components Regression
+  
+  - Partial Least Squares Regression
+
+## Findings
+With the analysis, we find that
+
+## Conclusions
+In the end, we may conclude that 
+
+## After Thoughts
+In the analysis, we also realized that ....
+
+Therefore, in the future, 
+
+
+
 
 This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
