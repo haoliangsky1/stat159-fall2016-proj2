@@ -25,3 +25,7 @@ knitr::include_graphics("../../images/scatterplot-pcr.png")
 knitr::include_graphics("../../images/scatterplot-plsr.png")
 ``` 
 
+    How closely the dotted red line fits the solid black line is an indication of how generalizable this regression model is for an arbitrary data set. Informally, it appears as though PCR better matches up the expected error with the training set error compared to PLSR since the lines are further apart for PLSR. However, overall, PLSR appears to minimize error (MSEP) using fewer components than does PCR. The tradeoff between PCR and PLSR is that PLSR requires fewer components to attain a low error, but it is subject to more uncertainty when applied to different data sets.
+    
+## LR and RR
+    
