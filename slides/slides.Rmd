@@ -114,6 +114,22 @@ par(mfrow=c(1,1))
 |PCR|10|
 |PLSR|4|
 
+## Resutls: Overall
+```{r,echo=FALSE, message=FALSE,results='asis'}
+load('../data/mseOLS.RData')
+load('../data/mseLR.RData')
+load('../data/mseRR.RData')
+load('../data/msePCR.RData')
+load('../data/msePLSR.RData')
+```
+|Method|Prediction MSE|
+|:-----:|:-----:|
+|OLS Regression|0.04661927|
+|Ridge Regression|0.04552898|
+|Lasso Regression|0.04728975|
+|PCR|0.04661927|
+|PLSR|0.04889533|
+
 ## Conclusions
 In the end, we may conclude that 
 
