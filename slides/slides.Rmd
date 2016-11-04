@@ -1,7 +1,7 @@
 ---
-title: "Analysis and Comparison of Multiple Regression Methods for Credit data set"
+title: "Analysis and Comparison of Multiple Regression Methods for Credit Data"
 author: "Liang Hao, Andrew Shibata"
-date: "11/2/2016"
+date: "11/4/2016"
 output: ioslides_presentation
 ---
 
@@ -63,9 +63,12 @@ $$\sum_{i = 1}^{n}(y_{i} - \beta_{0} - \sum_{j = 1}^{p}\beta_{j}x_{ij})^{2} + \l
 ### Partial Least Squares Regression
 
 ## Cross-validation (CV)
-A method for tuning parameters used in
 
+- Definition: Model validation technique for assessing how the results of a statistical analysis will generalize to an independent data set
 
+- Purpose: define a dataset to "test" the model in the training phase, in order to limit problems like overfitting, give an insight on how the model will generalize to the test dataset, etc.
+
+- Summary: combines (averages) measures of fit (prediction error) to derive a more accurate estimate of model prediction performance.
 
 
 ## Results
