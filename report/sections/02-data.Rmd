@@ -1,7 +1,7 @@
 ---
 title: "Data"
 author: "Liang Hao, Andrew Shibata"
-date: "10/24/2016"
+date: "11/3/2016"
 output: pdf_document
 ---
 ```{r,echo=FALSE, message=FALSE}
@@ -10,7 +10,7 @@ options(xtable.comment = FALSE)
 options(knitr.comment = FALSE)
 ```
 
-# 2:Data
+# Data
 
 ## Description
 The *Credit* data set contains information about 400 bank customers. It has eleven columns in total, six of which are quantitative, including:
@@ -41,7 +41,7 @@ We may first run some preliminary analysis on each of these variables.
 
 ```{r, echo=FALSE, results='asis', message=FALSE}
 library(xtable)
-load('../../data/eda-summaryMatrix.RData')
+load('../data/eda-summaryMatrix.RData')
 xtable(summaryMatrix, caption = 'Summary Statistics for Quantitative Variables')
 ```
 
@@ -49,63 +49,63 @@ The distribution of the variables might not be necessarily clear. We may also ha
 
 #### Income:
 ```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE}
-knitr::include_graphics("../../images/histogram-income.png")
+knitr::include_graphics("../images/histogram-income.png")
 ```
 
 We can see that *Income* has a skewed-to-the-right distribution, with a peak of distribution at around 25 unit, which also explains why its mean of 45.22 is quite larger than its median 33.12.
 
 #### Limit:
 ```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE}
-knitr::include_graphics("../../images/histogram-limit.png")
+knitr::include_graphics("../images/histogram-limit.png")
 ```
 
 We see that *Rating* basically follows a normal distribution, with the majority of the data in range between 1000 and 8000. We can also see that the median 4622 is relatively close to its mean 4735.
 
 #### Rating:
 ```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE}
-knitr::include_graphics("../../images/histogram-rating.png")
+knitr::include_graphics("../images/histogram-rating.png")
 ```
 
 We see that *Rating* basically follows a normal distribution with a long right tail. Most of the data lie in the range between 300 and 600. Also, its median 344 is relatively close to its mean of 355.
 
 #### Cards:
 ```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE}
-knitr::include_graphics("../../images/histogram-cards.png")
+knitr::include_graphics("../images/histogram-cards.png")
 ```
 
 We see that *Cards* follows a skewed to the right distribution, with a peak of distribution between 0 and 2. Because the range of this variable, 8, is relatively small, we may consider scaling for future analysis.
 
 #### Age:
 ```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE}
-knitr::include_graphics("../../images/histogram-age.png")
+knitr::include_graphics("../images/histogram-age.png")
 ```
 
 We may see that *Age* has two peaks, at 40-50 and 60-70 years old, which can also be infereced by the fact that both of its median 56 and its mean 55 are not in the peak ranges.
 
 #### Education:
 ```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE}
-knitr::include_graphics("../../images/histogram-education.png")
+knitr::include_graphics("../images/histogram-education.png")
 ```
 
 We may see that *Education* has a skewed-to-the-left distribution, with a peak at 15 years, saying that most people have years of education upto undergraduate levels. We may also see this trend from the fact that its median 14 is slightly greater than its mean of 13.5.
 
 #### Balance:
 ```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE}
-knitr::include_graphics("../../images/histogram-balance.png")
+knitr::include_graphics("../images/histogram-balance.png")
 ```
 
 For the dependent variable *Balance*, we may see that the distribution has a long right tail, with a peak between 0 and 250 units. Such a trend can also be inferenced from the fact that its meidan 459.5 is quite smaller than its mean of 520.
 
 Furthermore, we may also have a look at the correlation between the variables:
 ```{r,echo=FALSE, results='asis'}
-load('../../data/correlation-matrix.RData')
+load('../data/correlation-matrix.RData')
 xtable(correlationMatrix, caption = 'Correlation matrix for the Quantitative Variables')
 ```
 
 Additionally the plot of correlations:
 
 ```{r,echo=FALSE, out.width='400px',fig.align='center'}
-knitr::include_graphics("../../images/scatterplot-matrix.png")
+knitr::include_graphics("../images/scatterplot-matrix.png")
 ```
 
 
@@ -120,56 +120,56 @@ Also, we may want to normalize and standardize the data set for the range and sc
 
 #### Gender:
 ```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE, results='asis'}
-knitr::include_graphics("../../images/barchart-gender.png")
-load('../../data/frequencyTable-gender.RData')
+knitr::include_graphics("../images/barchart-gender.png")
+load('../data/frequencyTable-gender.RData')
 xtable(genderTable, caption = 'Frequency Table for Gender')
 ```
 
 We may see that the two levels *Male* and *Female* basically have the same amount of input in this data set. Additionally, we may have a look at the boxplot os *Balance* conditioned on the two levels of *Gender*:
 ```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE}
-knitr::include_graphics("../../images/boxplot-balanceConditionalOnGender.png")
+knitr::include_graphics("../images/boxplot-balanceConditionalOnGender.png")
 ```
 
 We may see that the two boxes seem quite similar to each other, which may indicate that *Gender* might not have a strong correlation with *Balance*.
 
 #### Student:
 ```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE,results='asis'}
-knitr::include_graphics("../../images/barchart-student.png")
-load('../../data/frequencyTable-student.RData')
+knitr::include_graphics("../images/barchart-student.png")
+load('../data/frequencyTable-student.RData')
 xtable(studentTable, caption = 'Frequency Table for Student')
 ```
 
 We may see that majority input of the data set are not students. Additionally, we may have a look at the boxplot os *Balance* conditioned on the two levels of *Student*:
 ```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE}
-knitr::include_graphics("../../images/boxplot-balanceConditionalOnStudent.png")
+knitr::include_graphics("../images/boxplot-balanceConditionalOnStudent.png")
 ```
 
 We may see that the *Balance* of *Students* look much higher than those of *Non-Students*, which may indicate that *Student* may be a good predictor for the *Balance*. We may keep this in mind for future analysis.
 
 #### Married:
 ```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE, results='asis'}
-knitr::include_graphics("../../images/barchart-married.png")
-load('../../data/frequencyTable-married.RData')
+knitr::include_graphics("../images/barchart-married.png")
+load('../data/frequencyTable-married.RData')
 xtable(marriedTable, caption = 'Frequency Table for Marital Status')
 ```
 
 We may see that more married customers are in the data set than single ones. Additionally, we may have a look at the boxplot os *Balance* conditioned on the two levels of *Married*:
 ```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE}
-knitr::include_graphics("../../images/boxplot-balanceConditionalOnMarried.png")
+knitr::include_graphics("../images/boxplot-balanceConditionalOnMarried.png")
 ```
 
 We can see that the two boxplots have basically the same distribution, with may indicate that the *Balance* might not depend on *Married*.
 
 #### Ethnicity:
 ```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE, results='asis'}
-knitr::include_graphics("../../images/barchart-ethnicity.png")
-load('../../data/frequencyTable-ethnicity.RData')
+knitr::include_graphics("../images/barchart-ethnicity.png")
+load('../data/frequencyTable-ethnicity.RData')
 xtable(ethnicityTable, caption = 'Frequency Table for Ethnicity')
 ```
 
 We may see that *Caucasian* takes about half in the ethnicity of the customers, and *African American* and *Asian* take the other half combined. Additionally, we may have a look at the boxplot os *Balance* conditioned on the three levels of *Ethnicity*:
 ```{r, out.width = "150px", echo=FALSE,message=FALSE, fig.align ='center', eval = T, split=TRUE}
-knitr::include_graphics("../../images/boxplot-balanceConditionalOnEthnicity.png")
+knitr::include_graphics("../images/boxplot-balanceConditionalOnEthnicity.png")
 ```
 
 We may see that the *Balance* distribution of the three ethnicities are basically the same, meaning that *Balance* might not depend on the *Ethnicity* of the customers.
@@ -177,10 +177,4 @@ We may see that the *Balance* distribution of the three ethnicities are basicall
 #### Conclusion:
 With the analysis above, we may consider using *Student* as a predictor, for *Balance* are quite different for the two levels. For other variables, we may want to figure out with future analysis.
 
-
-#### To the side: something fun from lecture, maybe used for PCA
-```{r}
-install.packages('FactoMinoR')
-library(FactoMineR)
-```
 

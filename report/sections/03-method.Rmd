@@ -1,7 +1,7 @@
 ---
 title: "Method"
 author: "Liang Hao, Andrew Shibata"
-date: "10/24/2016"
+date: "11/3/2016"
 output: pdf_document
 ---
 ```{r,echo=FALSE, message=FALSE}
@@ -10,7 +10,7 @@ options(xtable.comment = FALSE)
 options(knitr.comment = FALSE)
 ```
 
-# 3: Method
+# Method
 The methods that we are evaluating for this project include two Shrinkage Methods, *Ridge Regression* and *Lasso Regression*, and two Dimension Reduction Methods, *Principal Components Regression* and *Partial Least Squares Regression.* We also have the *Ordinary Least Squares Regression* as the benchmark to compare the models.
 
 ### Ordinary Least Squares Regression (OLS)
@@ -55,6 +55,5 @@ After standaridizing the $p$ predictors, PLS computes the first direction $Z_1$ 
 To identify the second PLS direction we first *adjust* each of the variables for $Z_1$, by regressing each variable on $Z_1$ and taking *residuals*. These residuals can be interpreted as the remaining information that has not been explained by the first PLS direction. We then compute $Z_2$ using this *orthogonalized* data in exactly the same fashion as $Z_1$. This iterative approach can be repeated $M$ times to identify multiple PLS components $Z_1, Z_2,\dotsc,Z_M$. Finally, at the end of this procedure, we use least squares to fit a linear model to predict $Y$ using $Z_1, Z_2,\dotsc,Z_M$ in exactly the same way as for PCR.
 
 We will also select the number $M$ of *partial least squares* directions used in PLS via cross-validation. And we will perform standardization of the predictors and the response before performing PLS.
-
 
 

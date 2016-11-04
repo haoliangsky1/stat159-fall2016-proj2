@@ -1,7 +1,7 @@
 ---
 title: "Analysis"
 author: "Liang Hao, Andrew Shibata"
-date: "10/24/2016"
+date: "11/3/2016"
 output: pdf_document
 ---
 ```{r,echo=FALSE, message=FALSE}
@@ -12,7 +12,7 @@ library(glmnet)
 library(pls)
 ```
 
-# 4: Analysis
+# Analysis
 In the section, we will perform the analysis we discussed above. Specifically, we would perform training and test set creatation, randomization seed establishment, parameter choosing via cross-validation and model fitting for each of the methods.
 
 ## Pre-modeling Data Processing
@@ -32,8 +32,8 @@ We will first perform two major processing steps before the modeling process:
 
 ## Ordinary Least Squares Regression (OLS)
 ```{r,echo=FALSE,message=FALSE}
-load('../../data/ols-regression-model.RData')
-load('../../data/mseOLS.RData')
+load('../data/ols-regression-model.RData')
+load('../data/mseOLS.RData')
 print(ols.mse)
 ```
 We first fit the Ordinary Least Squares Regression model to the training set. There is no parameters to be tuned. And the prediction mean square error of the OLS model on the test set is shown above: 0.04749383. We will use this as reference in comparison with other prediction methods.
@@ -43,7 +43,7 @@ We then fit the Ridge Regression model to the training set. Firstly, we need to 
 
 
 ```{r,echo=FALSE, message=FALSE, fig.width=4, fig.align='center'}
-load('../../data/regressionRR-cvResult.RData')
+load('../data/regressionRR-cvResult.RData')
 rr.bestlam = rr.cv.out$lambda.min
 plot(rr.cv.out, main = 'Plot for Cross-validation of Ridge')
 abline(v = rr.bestlam)
@@ -53,7 +53,7 @@ print(rr.bestlam)
 From the graph above, we choose the best $\lambda$ given this traning set, which is 0.01321941, and refit the model to the entire training set with $\lambda = 0.01321941$. 
 
 ```{r,echo=FALSE, message=FALSE}
-load('../../data/mseRR.RData')
+load('../data/mseRR.RData')
 print(rr.mse)
 ```
 
@@ -64,7 +64,7 @@ We then fit the Lasso Regression model to the training set. Firstly, we need to 
 
 
 ```{r,echo=FALSE, message=FALSE, fig.width=4, fig.align='center'}
-load('../../data/regressionLR-cvResult.RData')
+load('../data/regressionLR-cvResult.RData')
 lr.bestlam = lr.cv.out$lambda.min
 plot(lr.cv.out, main = 'Plot for Cross-validation of Lasso')
 abline(v = lr.bestlam)
@@ -74,7 +74,7 @@ print(lr.bestlam)
 From the graph above, we choose the best $\lambda$ given this traning set, which is 0.01, and refit the model to the entire training set with $\lambda = 0.01$. 
 
 ```{r,echo=FALSE, message=FALSE}
-load('../../data/mseLR.RData')
+load('../data/mseLR.RData')
 print(lr.mse)
 ```
 
@@ -85,7 +85,7 @@ We then fit the Principal Components Regression to the training set. Setting the
 
 
 ```{r,echo=FALSE, message=FALSE,fig.align='center', fig.width=4}
-load('../../data/regressionPCR-cvResult.RData')
+load('../data/regressionPCR-cvResult.RData')
 pcr.minCompt = 11
 validationplot(pcr.fit, val.type = "MSEP", main = 'Plot for Cross-validation of PCR')
 ```
@@ -93,7 +93,7 @@ validationplot(pcr.fit, val.type = "MSEP", main = 'Plot for Cross-validation of 
 From the validation plot above, we may find that the lowest cross-validation error occurs when $M = 11$ component are used. Therefore, we compute the test MSE:
 
 ```{r,echo=FALSE, message=FALSE}
-load('../../data/msePCR.RData')
+load('../data/msePCR.RData')
 print(pcr.mse)
 ```
 
@@ -104,14 +104,14 @@ We then fit the Partial Least Squares Regression to the training set. Setting th
 
 
 ```{r,echo=FALSE, message=FALSE,fig.align='center', fig.width=4}
-load('../../data/regressionPLSR-cvResult.RData')
+load('../data/regressionPLSR-cvResult.RData')
 validationplot(plsr.fit, val.type = "MSEP", main = 'Plot for Cross-validation of PLSR')
 ```
 
 From the validation plot above, we may find that the lowest cross-validation error occurs when $M = 4$ component are used. Therefore, we compute the test MSE:
 
 ```{r,echo=FALSE, message=FALSE}
-load('../../data/msePLSR.RData')
+load('../data/msePLSR.RData')
 print(plsr.mse)
 ```
 

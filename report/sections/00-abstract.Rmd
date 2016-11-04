@@ -1,12 +1,12 @@
 ---
 title: "Abstract"
 author: "Liang Hao, Andrew Shibata"
-date: "10/24/2016"
+date: "11/3/2016"
 output: pdf_document
 ---
 
-# 0:Abstract
+# Abstract
 
-This project is largely based on Chapter 6 of **Linear Model Selection and Regularization** (From "An Introduction to Statistical Learning" by James et al.). The primary idea of this project is to perform a predictive modeling process applied on the data set Credit. We will be considering *Ridge Regression (RR)*, *Lasso Regression (LR)*, *Principal Components Regression (PCR)*, and *Partial Least Squares REgression (PLSR)*, and training them using cross-validation. We evaluate the best model by their Minium Square Errors on the test sets.
+This project is largely based on Chapter 6 of **Linear Model Selection and Regularization** (From "An Introduction to Statistical Learning" by James et al.). The primary idea of this project is to perform a predictive modeling process applied on the data set Credit. We will be considering *Ridge Regression (RR)*, *Lasso Regression (LR)*, *Principal Components Regression (PCR)*, and *Partial Least Squares Regression (PLSR)*, and training them using cross-validation. We evaluate the best model by their Minium Square Errors on the test sets.
 
 
