@@ -1,5 +1,5 @@
 # stat159-fall2016-proj2: 
-# Analysis and Comparison of Multiple Regression Methods for Credit data set
+# Analysis and Comparison of Multiple Regression Methods for Credit Data
 
 This repository holds the material for Project 2 of the fall 2016 edition of Statistics 159 at UC Berkeley by Liang Hao and Andrew Shibata.
 
