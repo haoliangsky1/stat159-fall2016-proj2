@@ -6,6 +6,9 @@ csv = data/Credit.csv
 RData = data/*.RData
 png = images/*.png
 txt = data/*.txt
+rmd = report/sections/*.Rmd
+scaled-credit = data/scaled-credit.csv
+trainingIndex = data/trainingIndex.RData
 # The randomization seed for training and test set
 seed = 1 
 
@@ -15,48 +18,49 @@ output = $(csv) $(RData) $(png) $(txt) session-info.txt report/report.pdf
 all: $(output)
 
 report/report.pdf:
+	cat $(rmd) > report/report.Rmd
 	Rscript -e 'library(rmarkdown); render("report/report.Rmd")'
 
-session-info.txt:
+session-info.txt: session.sh
 	bash session.sh
 	Rscript code/scripts/session-info-script.R
 
+data/*.RData: 
+	Rscript code/scripts/regressionOLS-script.R $(scaled-credit) $(trainingIndex)
 data/*.RData:
-	Rscript code/scripts/regressionOLS-script.R data/scaled-credit.csv data/trainingIndex.RData
+	Rscript code/scripts/regressionLR-script.R $(scaled-credit) $(trainingIndex) $(seed)
 data/*.RData:
-	Rscript code/scripts/regressionLR-script.R data/scaled-credit.csv data/trainingIndex.RData $(seed)
+	Rscript code/scripts/regressionRR-script.R $(scaled-credit) $(trainingIndex) $(seed)
 data/*.RData:
-	Rscript code/scripts/regressionRR-script.R data/scaled-credit.csv data/trainingIndex.RData $(seed)
+	Rscript code/scripts/regressionPCR-script.R $(scaled-credit) $(trainingIndex) $(seed)
 data/*.RData:
-	Rscript code/scripts/regressionPCR-script.R data/scaled-credit.csv data/trainingIndex.RData $(seed)
-data/*.RData:
-	Rscript code/scripts/regressionPLSR-script.R data/scaled-credit.csv data/trainingIndex.RData $(seed)
+	Rscript code/scripts/regressionPLSR-script.R $(scaled-credit) $(trainingIndex) $(seed)
 data/*.png:
-	Rscript code/scripts/regressionLR-script.R data/scaled-credit.csv data/trainingIndex.RData $(seed)
+	Rscript code/scripts/regressionLR-script.R $(scaled-credit) $(trainingIndex) $(seed)
 data/*.png:
-	Rscript code/scripts/regressionRR-script.R data/scaled-credit.csv data/trainingIndex.RData $(seed)
+	Rscript code/scripts/regressionRR-script.R $(scaled-credit) $(trainingIndex) $(seed)
 data/*.png:
-	Rscript code/scripts/regressionPCR-script.R data/scaled-credit.csv data/trainingIndex.RData $(seed)
+	Rscript code/scripts/regressionPCR-script.R $(scaled-credit) $(trainingIndex) $(seed)
 data/*.png:
-	Rscript code/scripts/regressionPLSR-script.R data/scaled-credit.csv data/trainingIndex.RData $(seed)
+	Rscript code/scripts/regressionPLSR-script.R $(scaled-credit) $(trainingIndex) $(seed)
 
 
 data/*.RData: 
-	Rscript code/scripts/trainingAndTestSet-script.R data/scaled-credit.csv $(seed)
+	Rscript code/scripts/trainingAndTestSet-script.R $(scaled-credit) $(seed)
 
 data/*.csv: 
-	Rscript code/scripts/trainingAndTestSet-script.R data/scaled-credit.csv $(seed)
+	Rscript code/scripts/trainingAndTestSet-script.R $(scaled-credit) $(seed)
 
 data/*.RData:
-	Rscript code/scripts/regressionOLS-script.R data/scaled-credit.csv data/trainingIndex.RData
+	Rscript code/scripts/regressionOLS-script.R $(scaled-credit) $(trainingIndex)
 
 data/*.RData:
-	Rscript code/scripts/regressionRR-script.R data/scaled-credit.csv data/trainingIndex.RData
+	Rscript code/scripts/regressionRR-script.R $(scaled-credit) $(trainingIndex)
 
 
 
 # Pre-modeling Data Processing
-data/scaled-credit.csv:
+$(scaled-credit):
 	Rscript code/scripts/premodelingDataProcessing-script.R data/Credit.csv
 
 # Exploratory Data Analysis (EDA)
@@ -77,7 +81,7 @@ data:
 	curl -O http://www-bcf.usc.edu/~gareth/ISL/Credit.csv
 	mv Credit.csv data/Credit.csv
 	Rscript code/scripts/premodelingDataProcessing-script.R data/Credit.csv
-	Rscript code/scripts/trainingAndTestSet-script.R data/scaled-credit.csv $(seed)
+	Rscript code/scripts/trainingAndTestSet-script.R $(scaled-credit) $(seed)
 
 tests:
 	# run the unit tests of the self-defiend functions
@@ -85,27 +89,27 @@ tests:
 
 eda:
 	# perform the exploratory data analysis
-	Rscript code/scripts/eda-script.R data/Credit.csv
+	Rscript code/scripts/eda-script.R $(csv)
 
 ols:
 	# run the OLS regression
-	Rscript code/scripts/regressionOLS-script.R data/scaled-credit.csv data/trainingIndex.RData
+	Rscript code/scripts/regressionOLS-script.R $(scaled-credit) $(trainingIndex)
 
 ridge:
 	# run the Ridge Regression with Seed
-	Rscript code/scripts/regressionRR-script.R data/scaled-credit.csv data/trainingIndex.RData $(seed)
+	Rscript code/scripts/regressionRR-script.R $(scaled-credit) $(trainingIndex) $(seed)
 
 lasso:
 	# run the Lasso Regression with Seed
-	Rscript code/scripts/regressionLR-script.R data/scaled-credit.csv data/trainingIndex.RData $(seed)
+	Rscript code/scripts/regressionLR-script.R $(scaled-credit) $(trainingIndex) $(seed)
 
 pcr:
 	# run the PCR with Seed
-	Rscript code/scripts/regressionPCR-script.R data/scaled-credit.csv data/trainingIndex.RData $(seed)
+	Rscript code/scripts/regressionPCR-script.R $(scaled-credit) $(trainingIndex) $(seed)
 
 plsr:
 	# run the PLSR with Seed
-	Rscript code/scripts/regressionPLSR-script.R data/scaled-credit.csv data/trainingIndex.RData $(seed)
+	Rscript code/scripts/regressionPLSR-script.R $(scaled-credit) $(trainingIndex) $(seed)
 
 regressions:
 	make ols
@@ -114,12 +118,15 @@ regressions:
 	make pcr
 	make plsr
 
-report:
+report: $(rmd)
+	#concatinate the four files into one
+	cat $(rmd) > report/report.Rmd
 	# generate report.pdf
 	Rscript -e 'library(rmarkdown); render("report/report.Rmd")'
 
 slides:
 	# generate the slides.html
+	Rscript -e 'library(rmarkdown); render("slides/slides.Rmd")'
 
 
 session:
