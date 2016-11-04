@@ -131,20 +131,7 @@ load('../data/msePLSR.RData')
 |PLSR|0.04889533|
 
 ## Conclusions
-In the end, we may conclude that 
+In the end, we may conclude that, for this specific data set, with the randomization seed of 1, the *Ridge Regression* seems to have the best performace with respect to the mimimal Mean-square Error of the test data set.
 
-## After Thoughts
-In the analysis, we also realized that ....
-
-Therefore, in the future, 
-
-
-
-
-## Slide with R Output
-
-
-## Slide with Plot
-
-
+This fact may also be due to the relatively small size of the data set. And because the relatively small number of the predictors, the Dimensional Reduction methods do not get a chance to exploit their advantages. We may expect to have improvement for problems with a larger number of predictors.
 
