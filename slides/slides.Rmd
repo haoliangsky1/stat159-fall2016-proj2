@@ -13,13 +13,20 @@ library(glmnet)
 library(pls)
 ```
 
-## The slides
+## Introduction
 These are the accompanying slides to our project which bears the same title.
 
-In the following slides, we would discuss 
+In the following slides, we would introduce the data set, goal, methods, results and conclusions for the project.
 
 ## Data
 The data for this project, the [Credit](http://www-bcf.usc.edu/~gareth/ISL/Credit.csv) come from the generous contribution of *An Introduction to Statistical Learning*.
+
+
+|Predictor|Predictor|Response|
+|-----|-----|-----|
+|Quantitative|Qualitative|Quantitative|
+|Income, Limit, Rating, Cards, Age, Education|Gender, Student, Married, Ethnicity|Balance|
+
 
 ## Goal
 The goal of this project is thus to choose and fit a regression model in order to predict the *Balance* of any new client with the above information as input.
