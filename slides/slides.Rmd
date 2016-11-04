@@ -94,13 +94,25 @@ par(mfrow=c(1,1))
 ```
 
 |Methods|Lambda|
-|----|----|
+|:----:|:----:|
 |Ridge|0.01321941|
 |Lasso|0.01|
 
 
-## Results
-### PCR vs. PLSR
+## Results: PCR vs. PLSR
+```{r, echo = FALSE, message=FALSE, fig.width=9, fig.height=3.3, eval=TRUE}
+load('../data/regressionPCR-cvResult.RData')
+load('../data/regressionPLSR-cvResult.RData')
+par(mfrow=c(1,2))
+validationplot(pcr.fit, main = '10-fold CV for PCR')
+validationplot(plsr.fit, main = '10-flod CV for PLSR')
+par(mfrow=c(1,1))
+```
+
+|Methods|# of Principal Components|
+|:----:|:----:|
+|PCR|10|
+|PLSR|4|
 
 ## Conclusions
 In the end, we may conclude that 
