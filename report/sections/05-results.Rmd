@@ -20,7 +20,7 @@ In this section we will compare Principal Components Regression with Partial Lea
 
 Below are the plots for cross-validation for PCR and PLSR. They compare the number of components used to the cross-validation MSE (MSEP). 
     
-```{r,echo=FALSE,fig.align='center'}
+```{r,echo=FALSE,fig.align='center', out.width = "150px"}
 knitr::include_graphics("../images/scatterplot-pcr.png")
 knitr::include_graphics("../images/scatterplot-plsr.png")
 ``` 
@@ -31,11 +31,11 @@ How closely the dotted red line fits the solid black line is an indication of ho
 
 Below are the analogous plots for LR and RR. These plots compare log($\lambda$) values to MSEP.
 
-```{r,echo=FALSE,fig.align='center'}
-knitr::include_graphics("../images/scatterplot-lr.png")
-knitr::include_graphics("../images/scatterplot-rr.png")
+```{r,echo=FALSE,fig.align='center', out.width = "150px"}
+knitr::include_graphics("../images/scatterplot-lasso.png")
+knitr::include_graphics("../images/scatterplot-ridge.png")
 ``` 
 
-The lambda values in LR and RR determine how heavily the Ridge and Lasso Regression models shrink the effect of regression coefficients. This shrinkage influences the MSEP errors as seen in the plots. Noting that these are log(lambda) values, it appears as though lasso regression works best with very small lambda values while ridge regression gradually increases in error. Since LR only uses a subset of the coefficient vector while RR does not, LR involves fewer predictive elements so it makes sense that larger tuning values would more heavily influence the resulting prediction, and thus the MSEP. 
+The $\lambda$ values in LR and RR determine how heavily the Ridge and Lasso Regression models shrink the effect of regression coefficients. This shrinkage influences the MSEP errors as seen in the plots. Noting that these are log(lambda) values, it appears as though lasso regression works best with very small lambda values while ridge regression gradually increases in error. Since LR only uses a subset of the coefficient vector while RR does not, LR involves fewer predictive elements so it makes sense that larger tuning values would more heavily influence the resulting prediction, and thus the MSEP. 
 
 
