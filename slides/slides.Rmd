@@ -29,19 +29,35 @@ The regression methods that we will use in this project include:
 
 * Ordianry Linear Squares (OLS)
 
-* Shrinkage Methods
+### Shrinkage Methods
 
-  - Ridge Regression (RR)
+- Ridge Regression (RR)
   
-  - Lasso Regression (LR)
+- Lasso Regression (LR)
 
-* Dimensional Reduction Methods
+### Dimensional Reduction Methods
 
-  - Pricipal Components Regression (PCR)
+- Principal Components Regression (PCR)
   
-  - Partial Least Squares Regression (PLSR)
+- Partial Least Squares Regression (PLSR)
+
+
+## Shrinkage Methods:
+### Ridge Regression
+$$\sum_{i = 1}^{n}(y_{i} - \beta_{0} - \sum_{j = 1}^{p}\beta_{j}x_{ij})^{2} + \lambda \sum_{j = 1}^{p}\beta_{j}^{2} = RSS  + \lambda \sum_{j = 1}^{p}\beta_{j}^{2} $$
+
+### Lasso Regression
+$$\sum_{i = 1}^{n}(y_{i} - \beta_{0} - \sum_{j = 1}^{p}\beta_{j}x_{ij})^{2} + \lambda \sum_{j = 1}^{p}|\beta_{j}| = RSS + \lambda \sum_{j = 1}^{p}|\beta_{j}|$$
+
+
+## Dimensional Reduction Methods:
+### Principal Components Regression
+
+### Partial Least Squares Regression
 
 ## Cross-validation (CV)
+A method for tuning parameters used in
+
 
 
 
