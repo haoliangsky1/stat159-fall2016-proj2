@@ -11,6 +11,7 @@ options(xtable.comment = FALSE)
 options(knitr.comment = FALSE)
 library(glmnet)
 library(pls)
+library(xtable)
 ```
 
 ## Introduction
@@ -82,9 +83,23 @@ $$\sum_{i = 1}^{n}(y_{i} - \beta_{0} - \sum_{j = 1}^{p}\beta_{j}x_{ij})^{2} + \l
 - Summary: combines (averages) measures of fit (prediction error) to derive a more accurate estimate of model prediction performance.
 
 
-## Results
-### Ridge vs. Lasso
+## Results: Ridge vs. Lasso
+```{r, echo = FALSE, message=FALSE, fig.width=9, fig.height=3.3, eval=TRUE}
+load('../data/regressionLR-cvResult.RData')
+load('../data/regressionRR-cvResult.RData')
+par(mfrow=c(1,2))
+plot(rr.cv.out, main = '10-fold CV for Ridge')
+plot(lr.cv.out, main = '10-flod CV for Lasso')
+par(mfrow=c(1,1))
+```
 
+|Methods|Lambda|
+|----|----|
+|Ridge|0.01321941|
+|Lasso|0.01|
+
+
+## Results
 ### PCR vs. PLSR
 
 ## Conclusions
@@ -100,13 +115,8 @@ Therefore, in the future,
 
 ## Slide with R Output
 
-```{r cars, echo = TRUE}
-summary(cars)
-```
 
 ## Slide with Plot
 
-```{r pressure}
-plot(pressure)
-```
+
 
