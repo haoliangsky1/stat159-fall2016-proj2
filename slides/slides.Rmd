@@ -19,7 +19,7 @@ These are the accompanying slides to our project which bears the same title.
 In the following slides, we would introduce the data set, goal, methods, results and conclusions for the project.
 
 ## Data
-The data for this project, the [Credit](http://www-bcf.usc.edu/~gareth/ISL/Credit.csv) come from the generous contribution of *An Introduction to Statistical Learning*.
+The data for this project, [Credit Data](http://www-bcf.usc.edu/~gareth/ISL/Credit.csv), come from the generous contribution of *An Introduction to Statistical Learning*.
 
 
 |Predictor|Predictor|Response|
@@ -29,7 +29,10 @@ The data for this project, the [Credit](http://www-bcf.usc.edu/~gareth/ISL/Credi
 
 
 ## Goal
+
 The goal of this project is thus to choose and fit a regression model in order to predict the *Balance* of any new client with the above information as input.
+
+Because of the numeric nature of the dependent variable *Balance*, this is a *Regression* Problem.
 
 ## Methods
 The regression methods that we will use in this project include:
@@ -60,7 +63,15 @@ $$\sum_{i = 1}^{n}(y_{i} - \beta_{0} - \sum_{j = 1}^{p}\beta_{j}x_{ij})^{2} + \l
 ## Dimensional Reduction Methods:
 ### Principal Components Regression
 
+- Based on Principal Component Analysis (PCA)
+
+- Regressing the principal components of the explanatory variables instead of the varaibles directly.
+
 ### Partial Least Squares Regression
+
+- Related to PCR
+
+- Instead of finding hyperplanes of maximum variance between the response and independent variables, it finds a linear regression model by projecting the predicted variables and the observable variables to a new space.
 
 ## Cross-validation (CV)
 
@@ -86,16 +97,6 @@ Therefore, in the future,
 
 
 
-
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
-
-## Slide with Bullets
-
-- Bullet 1
-- Bullet 2
-- Bullet 3
 
 ## Slide with R Output
 
